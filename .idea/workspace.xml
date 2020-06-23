@@ -18,8 +18,8 @@
   <component name="Git.Settings">
     <option name="PUSH_TAGS">
       <GitPushTagMode>
-        <option name="argument" value="--follow-tags" />
-        <option name="title" value="Current Branch" />
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
       </GitPushTagMode>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -60,7 +60,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1592945281389</updated>
-      <workItem from="1592945283423" duration="4960000" />
+      <workItem from="1592945283423" duration="5213000" />
     </task>
     <task id="LOCAL-00001" summary="Немного обновлений">
       <created>1592950996245</created>
@@ -69,7 +69,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592950996245</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Немного обновлений">
+      <created>1592951260430</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1592951260430</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -81,14 +88,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="Немного обновлений" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="290" y="6" width="1025" height="810" key="CommitChangelistDialog2" timestamp="1592950995113">
+    <state x="290" y="6" width="1025" height="810" key="CommitChangelistDialog2" timestamp="1592951257849">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="290" y="6" width="1025" height="810" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592950995113" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1592951174311">
+    <state x="290" y="6" width="1025" height="810" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592951257849" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1592951278111">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1592951174311" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1592951278111" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1592945285009">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
