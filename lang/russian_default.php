@@ -32,7 +32,7 @@
 
 global $label;
 
-$label['ads_inc_edit']                       = 'Редактировать';
+$label['ads_inc_edit']                       = 'Edit';
 $label['ads_inc_pixels_col']                 = 'Pixels';
 $label['ads_inc_expires_col']                = 'Expires';
 $label['ads_inc_expied_stat']                = 'Expired!';
