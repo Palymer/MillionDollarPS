@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData">
+  <component name="PublishConfigData" serverName="45.138.72.7">
     <serverData>
-      <paths name="bkcg.ru">
+      <paths name="45.138.72.7">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />

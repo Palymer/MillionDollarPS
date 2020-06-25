@@ -60,7 +60,7 @@ if ( isset( $_REQUEST['ad_id'] ) && is_numeric( $_REQUEST['ad_id'] ) ) {
 
 	// pre-check for failure
 	if ( $prams['user_id'] == "" ) {
-		die( "Either the user id for this ad doesn't exist or this ad doesn't exist." );
+		die( "Либо идентификатор пользователя для этого объявления не существует, либо это объявление не существует." );
 	}
 
 	$banner_data = load_banner_constants( $prams['banner_id'] );
@@ -77,7 +77,7 @@ if ( isset( $_REQUEST['ad_id'] ) && is_numeric( $_REQUEST['ad_id'] ) ) {
 
 	upload_changed_pixels( $order_id, $BID, $size, $banner_data );
 
-	// Ad forms:
+	// Форма объявленияs:
 	?>
     <p>
     <div class="fancy_heading" width="85%"><?php echo $label['adv_pub_editad_head']; ?></div>
@@ -146,7 +146,7 @@ if ( isset( $_REQUEST['ad_id'] ) && is_numeric( $_REQUEST['ad_id'] ) ) {
 				publish_image( $BID );
 				process_map( $BID );
 			}
-			echo 'Ad Saved. <a href="ads.php?BID=' . $prams['banner_id'] . '">&lt;&lt; Go to the Ad List</a>';
+			echo 'Объявление сохранено. <a href="ads.php?BID=' . $prams['banner_id'] . '">&lt;&lt; Перейти к списку объявлений</a>';
 			echo "<hr>";
 		}
 	} else {
@@ -162,10 +162,10 @@ if ( isset( $_REQUEST['ad_id'] ) && is_numeric( $_REQUEST['ad_id'] ) ) {
 	$b_row = load_banner_row( $prams['banner_id'] );
 	?>
 
-    <h3>Additional Info</h3>
-    <b>Customer:</b><?php echo $u_row['LastName'] . ', ' . $u_row['FirstName']; ?><BR>
-    <b>Order #:</b><?php echo $prams['order_id']; ?><br>
-    <b>Grid:</b><a href='ordersmap.php?banner_id=<?php echo $prams['banner_id']; ?>'><?php echo $prams['banner_id'] . " - " . $b_row['name']; ?></a>
+    <h3>Дополнительная информация</h3>
+    <b>Клиент:</b><?php echo $u_row['LastName'] . ', ' . $u_row['FirstName']; ?><BR>
+    <b>Заказ #:</b><?php echo $prams['order_id']; ?><br>
+    <b>Сетка:</b><a href='ordersmap.php?banner_id=<?php echo $prams['banner_id']; ?>'><?php echo $prams['banner_id'] . " - " . $b_row['name']; ?></a>
 
 	<?php
 	echo '<hr>';

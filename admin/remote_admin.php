@@ -74,7 +74,7 @@ if ( $_REQUEST['approve_links'] != '' ) {
 			$i ++;
 		}
 	}
-	// approve pixels
+	// Утвердить пиксели
 	$sql = "UPDATE blocks set approved='Y' WHERE user_id=" . intval( $_REQUEST['user_id'] ) . " AND banner_id=" . intval( $BID );
 	mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) . $sql );
 

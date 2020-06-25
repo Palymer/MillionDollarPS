@@ -41,16 +41,21 @@ require_once( "../include/ads.inc.php" );
 ?>
 
     <div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000; "></div>
-    <b>[Ads Template] </b><span style="background-color: <?php if ( ( $_REQUEST['mode'] != 'edit' ) ) {
+    <b>[Шаблон объявления] </b>
+    <span style="background-color: <?php if ( ( $_REQUEST['mode'] != 'edit' ) ) {
 	echo "#FFFFff";
-} ?>; border-style:outset; padding: 5px;"><a href="adform.php?mode=view">View Form</a></span> <span style="background-color:  <?php if ( ( $_REQUEST['mode'] == 'edit' ) && ( $_REQUEST['NEW_FIELD'] == '' ) ) {
+} ?>; border-style:outset; padding: 5px;"><a href="adform.php?mode=view">Посмотреть форму</a>
+    </span> <span style="background-color:  <?php if ( ( $_REQUEST['mode'] == 'edit' ) && ( $_REQUEST['NEW_FIELD'] == '' ) ) {
 	echo "#FFFFCC";
-} ?>; border-style:outset; padding: 5px;"><a href="adform.php?mode=edit">Edit Fields</a></span> <span style="background-color: <?php if ( ( $_REQUEST['mode'] == 'edit' ) && ( $_REQUEST['NEW_FIELD'] != '' ) ) {
+} ?>; border-style:outset; padding: 5px;"><a href="adform.php?mode=edit">Редактировать поля</a>
+    </span> <span style="background-color: <?php if ( ( $_REQUEST['mode'] == 'edit' ) && ( $_REQUEST['NEW_FIELD'] != '' ) ) {
 	echo "#FFFFCC";
-} ?>; border-style:outset; padding: 5px;"><a href="adform.php?NEW_FIELD=YES&mode=edit">New Field</a></span>&nbsp; &nbsp; <span style="background-color: <?php echo "#ffffcc"; ?> ; border-style:outset; padding: 5px;"><a href="adtemplate.php">Edit Template</a></span> <span style="background-color: <?php echo "#F2F2F2"; ?> ; border-style:outset; padding: 5px;"><a href="adslist.php">Ad List</a></span>
+} ?>; border-style:outset; padding: 5px;"><a href="adform.php?NEW_FIELD=YES&mode=edit">Новое поле</a>
+    </span>&nbsp; &nbsp; <span style="background-color: <?php echo "#ffffcc"; ?> ; border-style:outset; padding: 5px;"><a href="adtemplate.php">Редактировать шаблон</a></span>
+    <span style="background-color: <?php echo "#F2F2F2"; ?> ; border-style:outset; padding: 5px;"><a href="adslist.php">Список объявлений</a></span>
 
     <hr>
-    Here you can edit the template for the ads. The ads are displayed when a mouse is moved over the pixels. <b>You will need to edit this template after inserting or removing a field on the Ad Form.</b><p>The rules are simple... if you want <b>to display to the value of a field, put two % signs around the field's template tag</b>, like this %TEMPLATE_TAG%. If you want
+    Here you can edit the template for the ads. The ads are displayed when a mouse is moved over the pixels. <b>You will need to edit this template after inserting or removing a field on the Форма объявления.</b><p>The rules are simple... if you want <b>to display to the value of a field, put two % signs around the field's template tag</b>, like this %TEMPLATE_TAG%. If you want
     <b>to display the field's label, put two $ signs around the field's template tag</b>, like this $TEMPLATE_TAG$. Use normal HTML to format the ad.</p>
 
     <hr>
@@ -83,7 +88,7 @@ echo "Current Language: [" . $_SESSION['MDS_LANG'] . "] Select language:";
 
 $lang_filename = $LANG_FILES[ $_SESSION['MDS_LANG'] ];
 if ( ! is_writable( "../lang/$lang_filename" ) ) {
-	echo "../lang/$lang_filename is not writeable. Please give permission for writing to this file before editing the template.<br>";
+	echo "../lang/$lang_filename не для записи Пожалуйста, дайте разрешение на запись в этот файл перед редактированием шаблона.<br>";
 }
 
 if ( ( $_REQUEST['save'] ) ) {

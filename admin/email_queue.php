@@ -171,7 +171,7 @@ $error  = $row['c'];
 
 if ( USE_SMTP != 'YES' ) {
 
-	//echo "<font color='black'><b>Note: You do not have SMTP enabled, so emails will not be sent via the queue. They will be processed by PHP's mail() function. Therefore there will be no outgoing emails listed below. (This is not an error)</b></font>";
+	//echo "<font color='black'><b>Note: You do not have SMTP enabled, so emails will not be sent via the queue. They will be processed by PHP's mail() function. Therefore there will be no Исходящие Emails listed below. (This is not an error)</b></font>";
 
 }
 

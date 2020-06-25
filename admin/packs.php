@@ -300,7 +300,7 @@ if ( $BID != '' ) {
                     <td><input size="5" type="text" name="days_expire" value="<?php echo $_REQUEST['days_expire']; ?>">How many days? (Enter 0 to use the grid's default)</td>
                 </tr>
                 <tr bgcolor="#ffffff">
-                    <td><font size="2">Maximum orders:</font></td>
+                    <td><font size="2">Maximum Заказы:</font></td>
                     <td><input size="5" type="text" name="max_orders" value="<?php echo $_REQUEST['max_orders']; ?>">How many times can this pacakge be ordered? (Enter 0 for unlimited)</td>
                 </tr>
 

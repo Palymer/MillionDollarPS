@@ -68,7 +68,7 @@ $res = mysqli_query( $GLOBALS['connection'], $sql );
 </form>
 <hr>
 <p>
-    Here is the list of the top clicks. You may copy and paste this list onto your website.
+    Here is the list of the Топ кликов. You may copy and paste this list onto your website.
 </p>
 
 <table width="100%" border="0" cellSpacing="1" cellPadding="3" align="center" bgColor="#d9d9d9">

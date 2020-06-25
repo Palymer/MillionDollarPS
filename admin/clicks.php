@@ -35,7 +35,7 @@ require_once __DIR__ . "/../include/init.php";
 require( 'admin_common.php' );
 
 if ( ADVANCED_CLICK_COUNT != 'YES' ) {
-	die ( "Advanced click tracking not enabled. You will need to enable advanced click tracking in the Main Config" );
+	die ( "Advanced click tracking not enabled. You will need to enable advanced click tracking in the Конфигурации" );
 }
 
 $BID = $f2->bid();

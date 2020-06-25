@@ -221,10 +221,10 @@ require_once __DIR__ . "/../include/init.php";
 
 ?>
 
-<h3>Main Configuration</h3>
+<h3>Конфигурации</h3>
 <p>Options on this page affect the running of the pixel advertising system.</p>
 <p>Note: <i>Make sure that config.php has write permissions <b>turned on</b> when editing this form. You should turn off write permission after editing this form.</i></p>
-<p><b>Tip:</b> Looking for where to settings for the grid? It is set in 'Pixel Inventory' -> <a href="inventory.php">Manage Grids</a>. Click on Edit to edit the grid parameters.</p>
+<p><b>Tip:</b> Looking for where to settings for the grid? It is set in 'Pixel Inventory' -> <a href="inventory.php">Управление сетками</a>. Click on Edit to edit the grid parameters.</p>
 <p>
 	<?php
 	if ( is_writable( "../config.php" ) ) {

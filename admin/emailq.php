@@ -41,12 +41,12 @@ if ( $_REQUEST['action'] == "send" ) {
 	$DO_SEND = "YES";
 } else {
 	?>
-    <h3>This is a backend script which will process your outgoing email queue</h3><br>
+    <h3>This is a backend script which will process your Исходящие Email queue</h3><br>
     Set this file up in your Cron jobs to run <i>every few minutes</i><br>
     This scripts's location is: <b><?php echo $_SERVER['SCRIPT_FILENAME']; ?></b><br>
     Crontab command to run will look something like:<b> /usr/bin/php -f <?php echo $_SERVER['SCRIPT_FILENAME']; ?></b><br>(Depending on the location of php)<p>
 
-        <br>Run Manually form Web:<input type="button" value="Process outgoing email queue" onclick="mds_load_page('email_q.php?action=send', true)">
+        <br>Run Manually form Web:<input type="button" value="Process Исходящие Email queue" onclick="mds_load_page('email_q.php?action=send', true)">
 
 	<?php
 	die();

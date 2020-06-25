@@ -58,12 +58,12 @@ $result = mysqli_query( $GLOBALS['connection'], $sql ) or die( mysqli_error( $GL
 $waiting = mysqli_num_rows( $result );
 ?>
 
-    <p align="left"><h3>Main Summary</h3></p>
-    <font size='1'>Current GMT Time: <?php echo( gmdate( "Y-m-d H:i:s" ) ); ?></font>
+    <p align="left"><h3>Основная информация</h3></p>
+    <font size='1'>Временная зона: <?php echo( gmdate( "Y-m-d H:i:s" ) ); ?></font>
     <table width="80%" border="0" cellpadding="5" style="border-collapse: collapse">
         <tr>
             <td style="border-bottom-style: solid; border-bottom-width: 1px"><?php echo $advertisers; ?></td>
-            <td style="border-bottom-style: solid; border-bottom-width: 1px"><a href="customers.php">Advertiser Accounts</a></td>
+            <td style="border-bottom-style: solid; border-bottom-width: 1px"><a href="customers.php">Аккаунты рекламодателей</a></td>
         </tr>
         <tr>
             <td style="border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" bgcolor="#FFFFCC">
@@ -71,22 +71,22 @@ $waiting = mysqli_num_rows( $result );
             <td style="border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" bgcolor="#FFFFCC">
                 <a href="orders.php?show=WA"><?php if ( $orders_waiting > 0 ) {
 						echo "<b>";
-					} ?>Orders Waiting<?php if ( $orders_waiting > 0 ) {
+					} ?>Ожидание заказов<?php if ( $orders_waiting > 0 ) {
 						echo "</b>";
 					} ?></a></td>
         </tr>
         <tr>
             <td style="border-bottom-style: solid; border-bottom-width: 1px"><?php echo $orders_cancelled; ?></td>
-            <td style="border-bottom-style: solid; border-bottom-width: 1px"><a href="orders.php?show=CA">Orders Cancelled</a></td>
+            <td style="border-bottom-style: solid; border-bottom-width: 1px"><a href="orders.php?show=CA">Отмененые заказы</a></td>
         </tr>
         <td style="border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" bgcolor="#FFFFCC">
 			<?php echo $orders_completed; ?></td>
         <td style="border-top-style: solid; border-top-width: 1px; border-bottom-style: solid; border-bottom-width: 1px" bgcolor="#FFFFCC">
-            <a href="orders.php?show=CO">Orders Completed</a></td>
+            <a href="orders.php?show=CO">Завершеные заказы</a></td>
         </tr>
         <tr>
             <td style="border-bottom-style: solid; border-bottom-width: 1px"><?php echo $waiting; ?></td>
-            <td style="border-bottom-style: solid; border-bottom-width: 1px"><a href="approve.php">Pixels Waiting for approval</a></td>
+            <td style="border-bottom-style: solid; border-bottom-width: 1px"><a href="approve.php">Пиксели в ожидании одобрения</a></td>
         </tr>
     </table>
 
@@ -95,7 +95,7 @@ $waiting = mysqli_num_rows( $result );
 $check_path = BASE_PATH . "/payment/check.php";
 
 if ( file_exists( $check_path ) ) {
-	echo "<b><font color='red'>Upgrade reminder: Please delete the file check.php from the payment/ file.</font></b>";
+	echo "<b><font color='red'>Напоминание об обновлении: пожалуйста, удалите файл check.php из платежа / файла.</font></b>";
 }
 
 ?>
@@ -113,7 +113,7 @@ while ( $row = mysqli_fetch_array( $result ) ) {
 		if ( strpos( $row['Type'], 'nfs' ) == 0 ) {
 
 			$sql = "ALTER TABLE `blocks` CHANGE `status` `status` SET( 'reserved', 'sold', 'free', 'ordered', 'nfs' ) NOT NULL ";
-			mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br>$sql<br>" );
+			mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br>$sql<br>" );
 		}
 	}
 }
@@ -127,14 +127,14 @@ while ( $row = mysqli_fetch_array( $result ) ) {
 		if ( strpos( $row['Type'], 'expired' ) == 0 ) {
 
 			//	$sql = "ALTER TABLE `orders` CHANGE `status` `status`  set('pending','completed','cancelled','confirmed','new', 'expired') NOT NULL ";
-			//	 mysqli_query($GLOBALS['connection'], $sql) or die ("<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error($GLOBALS['connection']) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>".mysqli_error($GLOBALS['connection']));
+			//	 mysqli_query($GLOBALS['connection'], $sql) or die ("<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error($GLOBALS['connection']) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>".mysqli_error($GLOBALS['connection']));
 
 		}
 
 		if ( strpos( $row['Type'], 'deleted' ) == 0 ) {
 
 			$sql = "ALTER TABLE `orders` CHANGE `status` `status`  set('pending','completed','cancelled','confirmed','new', 'expired', 'deleted') NOT NULL ";
-			mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" . mysqli_error( $GLOBALS['connection'] ) );
+			mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" . mysqli_error( $GLOBALS['connection'] ) );
 		}
 	}
 }
@@ -157,7 +157,7 @@ $mysql_server_info = mysqli_get_server_info( $GLOBALS['connection'] );
 
 if ( ! does_field_exist( "blocks", "published" ) ) {
 	$sql = "ALTER TABLE `blocks` ADD `published` SET( 'Y', 'N') NOT NULL ";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br>$sql<br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br>$sql<br>" );
 }
 
 if ( ! does_field_exist( "lang", "lang_code" ) ) {
@@ -173,7 +173,7 @@ if ( ! does_field_exist( "lang", "lang_code" ) ) {
   `is_default` char(1) NOT NULL default 'N',
   PRIMARY KEY  (`lang_code`)) ";
 
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 
 	$sql = "INSERT INTO `lang` VALUES ('EN', 'english.php', 'english.gif', 'Y', 'English', '', 'R0lGODlhGQARAMQAAAURdBYscgNNfrUOEMkMBdAqE9UTMtItONNUO9w4SdxmaNuObhYuh0Y5lCxVlFJcpqN2ouhfjLCrrOeRmeHKr/Wy3Lje4dPW3PDTz9/q0vXm1ffP7MLt5/f0+AAAAAAAACwAAAAAGQARAAAF02AAMIDDkOgwEF3gukCZIICI1jhFDRmOS4dF50aMVSqEjehFIWQ2kJLUMRoxCCsNzDFBZDCuh1RMpQY6HZYIiOlIYqKy9JZIqHeZTqMWnvoZCgosCkIXDoeIAGJkfmgEB3UHkgp1dYuKVWJXWCsEnp4qAwUcpBwWphapFhoanJ+vKxOysxMRgbcDHRlfeboZF2mvwp+5Eh07YC9naMzNzLmKuggTDy8G19jZ2NAiFB0LBxYuC+TlC7Syai8QGU0TAs7xaNxLDLoDdsPDuS98ABXfQgAAOw==', 'image/gif', 'Y')";
 
@@ -192,10 +192,10 @@ if ( ! does_field_exist( "banners", "banner_id" ) ) {
 		PRIMARY KEY  (`banner_id`)
 		) ;";
 
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 
 	$sql = "INSERT INTO `banners` VALUES (1, 100, 100, 0, 100, 'Million Pixels (1000x1000)');";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "config", "key" ) ) {
@@ -206,7 +206,7 @@ if ( ! does_field_exist( "config", "key" ) ) {
 		PRIMARY KEY ( `key` ) 
 		)";
 
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 if ( ! does_field_exist( "currencies", "code" ) ) {
 
@@ -224,61 +224,61 @@ if ( ! does_field_exist( "currencies", "code" ) ) {
 		  PRIMARY KEY  (`code`)
 		) ";
 
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 
 	$sql = "INSERT INTO `currencies` VALUES ('AUD', 'Australian Dollar', 1.3228, 'N', '$', 2, '.', ',')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 	$sql = "INSERT INTO `currencies` VALUES ('CAD', 'Canadian Dollar', 1.1998, 'N', '$', 2, '.', ',')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 	$sql = "INSERT INTO `currencies` VALUES ('EUR', 'Euro', 0.8138, 'N', '€', 2, '.', ',')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 	$sql = "INSERT INTO `currencies` VALUES ('GBP', 'British Pound', 0.5555, 'N', '£', 2, '.', ',')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 	$sql = "INSERT INTO `currencies` VALUES ('JPY', 'Japanese Yen', 110.1950, 'N', '¥', 0, '.', ',')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 	$sql = "INSERT INTO `currencies` VALUES ('KRW', 'Korean Won', 1028.8000, 'N', '&#8361;', 0, '.', ',')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 	$sql = "INSERT INTO `currencies` VALUES ('USD', 'U.S. Dollar', 1.0000, 'Y', '$', 2, '.', ',')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "blocks", "banner_id" ) ) {
 
 	$sql = "ALTER TABLE `blocks` ADD `banner_id` INT DEFAULT '1' NOT NULL";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 
 	$sql = "ALTER TABLE `blocks` DROP PRIMARY KEY , ADD PRIMARY KEY ( `block_id` , `banner_id` )";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "orders", "banner_id" ) ) {
 
 	$sql = "ALTER TABLE `orders` ADD `banner_id` INT DEFAULT '1' NOT NULL";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "banners", "currency" ) ) {
 
 	$sql = "ALTER TABLE `banners` ADD `currency` CHAR(3) DEFAULT 'USD' NOT NULL";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" . mysqli_error( $GLOBALS['connection'] ) );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" . mysqli_error( $GLOBALS['connection'] ) );
 }
 
 if ( ! does_field_exist( "blocks", "currency" ) ) {
 
 	$sql = "ALTER TABLE `blocks` ADD `currency` VARCHAR(3) DEFAULT 'USD' NOT NULL";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" . mysqli_error( $GLOBALS['connection'] ) );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" . mysqli_error( $GLOBALS['connection'] ) );
 }
 
 if ( ! does_field_exist( "blocks", "price" ) ) {
 
 	$sql = "ALTER TABLE `blocks` ADD `price` float  NULL";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "orders", "currency" ) ) {
 
 	$sql = "ALTER TABLE `orders` ADD `currency` CHAR(3) DEFAULT 'USD' NOT NULL";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 
 	$sql = "select *, banners.price_per_block AS PPB, banners.currency BAC, orders.currency ORC from orders, banners where orders.banner_id=banners.banner_id ";
 	$result = mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) );
@@ -302,38 +302,38 @@ if ( ! does_field_exist( "orders", "currency" ) ) {
 if ( ! does_field_exist( "orders", "date_published" ) ) {
 
 	$sql = "ALTER TABLE `orders` ADD date_published DATETIME  NULL";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "orders", "date_stamp" ) ) {
 
 	$sql = "ALTER TABLE `orders` ADD `date_stamp` DATETIME;";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "orders", "days_expire" ) ) {
 
 	$sql = "ALTER TABLE `orders` ADD `days_expire` INT DEFAULT 0;";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 /*if (!does_field_exist("banners", "publish_date")) {
 
 	$sql = "ALTER TABLE `banners` ADD publish_date DATETIME default NULL";
-	mysqli_query($GLOBALS['connection'], $sql) or die ("<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error($GLOBALS['connection']) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>");
+	mysqli_query($GLOBALS['connection'], $sql) or die ("<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error($GLOBALS['connection']) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>");
 
 }*/
 
 if ( ! does_field_exist( "banners", "time_stamp" ) ) {
 
 	$sql = "ALTER TABLE `banners` ADD `time_stamp` INT NOT NULL";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "blocks", "order_id" ) ) {
 
 	$sql = "ALTER TABLE `blocks` ADD order_id INT NOT NULL";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 
 	$sql    = "select * from orders ";
 	$result = mysqli_query( $GLOBALS['connection'], $sql );
@@ -382,7 +382,7 @@ if ( ! does_field_exist( "transactions", "transaction_id" ) ) {
 		PRIMARY KEY  (`transaction_id`))";
 	}
 
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "prices", "price_id" ) ) {
@@ -400,7 +400,7 @@ if ( ! does_field_exist( "prices", "price_id" ) ) {
 		  PRIMARY KEY  (`price_id`)
 		)";
 
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( 'mail_queue', 'mail_id' ) ) {
@@ -448,43 +448,43 @@ if ( ! does_field_exist( 'mail_queue', 'mail_id' ) ) {
 		PRIMARY KEY  (`mail_id`)) ";
 	}
 
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "prices", "col_from" ) ) {
 
 	$sql = "ALTER TABLE `prices` ADD col_from int(11) default 0";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "prices", "col_to" ) ) {
 
 	$sql = "ALTER TABLE `prices` ADD col_to int(11) default 100";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "blocks", "click_count" ) ) {
 
 	$sql = "ALTER TABLE `blocks` ADD `click_count` INT NOT NULL ";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "orders", "expiry_notice_sent" ) ) {
 
 	$sql = "ALTER TABLE `orders` ADD `expiry_notice_sent` SET( 'Y', 'N' ) NOT NULL ";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "banners", "max_orders" ) ) {
 
 	$sql = "ALTER TABLE `banners` ADD `max_orders` INT(11) NOT NULL DEFAULT 5 ";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "orders", "package_id" ) ) {
 
 	$sql = "ALTER TABLE `orders` ADD `package_id` INT(11) NOT NULL default 0";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "clicks", "block_id" ) ) {
@@ -510,7 +510,7 @@ if ( ! does_field_exist( "clicks", "block_id" ) ) {
 			)";
 	}
 
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "packages", "banner_id" ) ) {
@@ -526,19 +526,19 @@ if ( ! does_field_exist( "packages", "banner_id" ) ) {
 		PRIMARY KEY ( `package_id` ) 
 		)";
 
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "packages", "max_orders" ) ) {
 
 	$sql = "ALTER TABLE `packages` ADD `max_orders` mediumint(9) NOT NULL default '0'";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "packages", "description" ) ) {
 
 	$sql = "ALTER TABLE `packages` ADD `description` varchar(255) NOT NULL default ''";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 //$sql = "drop table form_fields ";
@@ -577,13 +577,13 @@ if ( ! does_field_exist( "form_fields", "field_id" ) ) {
 		`is_prefill` char(1) NOT NULL default 'N',
 		PRIMARY KEY  (`field_id`)
 		) ";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 	$sql = "INSERT INTO `form_fields` VALUES (1, 1, 1, 'not_empty', 'Ad Text', 'TEXT', 1, 'Y', '', '', 'was not filled in', '', 80, 0, 0, 0, 'ALT_TEXT', '', '', '', 0, '', 0, '', '', '')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 	$sql = "INSERT INTO `form_fields` VALUES (1, 2, 1, 'url', 'URL', 'TEXT', 2, 'Y', '', '', 'is not valid.', 'http://', 80, 0, 0, 0, 'URL', '', '', '', 0, '', 0, '', '', '')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 	$sql = "INSERT INTO `form_fields` VALUES (1, 3, 1, '', 'Additional Image', 'IMAGE', 3, '', '', '', '', '', 0, 0, 0, 0, 'IMAGE', '', '', '(This image will be displayed in a tooltip popup when your blocks are clicked)', 0, '', 0, '', '', '')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 if ( ! does_field_exist( "form_field_translations", "field_id" ) ) {
 	$sql = "CREATE TABLE `form_field_translations` (
@@ -595,14 +595,14 @@ if ( ! does_field_exist( "form_field_translations", "field_id" ) ) {
 		PRIMARY KEY  (`field_id`,`lang`),
 		KEY `field_id` (`field_id`)
 		)";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 
 	$sql = "INSERT INTO `form_field_translations` VALUES (1, 'EN', 'Ad Text', 'was not filled in', '')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 	$sql = "INSERT INTO `form_field_translations` VALUES (2, 'EN', 'URL', 'is not valid.', '')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 	$sql = "INSERT INTO `form_field_translations` VALUES (3, 'EN', 'Additional Image', '', '(This image will be displayed in a tooltip popup when your blocks are clicked)')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 
 	format_field_translation_table( 1 );
 }
@@ -623,14 +623,14 @@ if ( ! does_field_exist( "form_lists", "form_id" ) ) {
 		`no_wrap` set('Y','N') NOT NULL default '',
 		PRIMARY KEY  (`column_id`)
 		)  ";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 
 	$sql = "INSERT INTO `form_lists` VALUES (1, 'TIME', 1, 'ad_date', 'DATE', 1, 'N', 0, 'N', 'N', 'N', 'Y', 'N')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 	$sql = "INSERT INTO `form_lists` VALUES (1, 'EDITOR', 2, '1', 'ALT_TEXT', 2, 'N', 0, 'Y', 'N', 'N', 'Y', 'N')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 	$sql = "INSERT INTO `form_lists` VALUES (1, 'TEXT', 3, '2', 'URL', 3, 'N', 0, 'N', 'N', 'N', 'N', 'N')";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "banners", "block_height" ) ) {
@@ -648,7 +648,7 @@ if ( ! does_field_exist( "banners", "block_height" ) ) {
 		ADD `max_blocks` INT NOT NULL default 10,
 		ADD `min_blocks` INT NOT NULL default 0;";
 
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "banners", "date_updated" ) ) {
@@ -659,25 +659,25 @@ if ( ! does_field_exist( "banners", "date_updated" ) ) {
 		$sql = "ALTER TABLE `banners` ADD `date_updated` DATETIME NOT NULL ";
 	}
 
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "banners", "bgcolor" ) ) {
 
 	$sql = "ALTER TABLE `banners` ADD `bgcolor` VARCHAR(7) NOT NULL default '#FFFFFF' ";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "banners", "auto_publish" ) ) {
 
 	$sql = "ALTER TABLE `banners` ADD `auto_publish` CHAR(1) NOT NULL default 'N' ";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "banners", "auto_approve" ) ) {
 
 	$sql = "ALTER TABLE `banners` ADD `auto_approve` CHAR(1) NOT NULL default 'N' ";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "temp_orders", "session_id" ) ) {
@@ -715,33 +715,33 @@ if ( ! does_field_exist( "temp_orders", "session_id" ) ) {
 		  PRIMARY KEY  (`session_id`)
 		)";
 	}
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "orders", "ad_id" ) ) {
 
 	$sql = "ALTER TABLE `orders` ADD `ad_id` INT";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "orders", "original_order_id" ) ) {
 
 	$sql = "ALTER TABLE `orders` ADD `original_order_id` INT";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 	$sql = "ALTER TABLE `orders` CHANGE `status` `status` SET( 'pending', 'completed', 'cancelled', 'confirmed', 'new', 'expired', 'deleted', 'renew_wait', 'renew_paid') NOT NULL ";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "orders", "subscr_status" ) ) {
 
 	$sql = "ALTER TABLE `orders` ADD `subscr_status` VARCHAR( 32 ) NOT NULL ;";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "blocks", "ad_id" ) ) {
 
 	$sql = "ALTER TABLE `blocks` ADD `ad_id` INT(11) NOT NULL default '0'";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "cat_name_translations", "category_id" ) ) {
@@ -753,7 +753,7 @@ if ( ! does_field_exist( "cat_name_translations", "category_id" ) ) {
   PRIMARY KEY  (`category_id`,`lang`),
   KEY `category_id` (`category_id`)
 )";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "codes", "field_id" ) ) {
@@ -764,7 +764,7 @@ if ( ! does_field_exist( "codes", "field_id" ) ) {
 				  `description` varchar(30) NOT NULL default '',
 				  PRIMARY KEY  (`field_id`,`code`)
 				)";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "codes_translations", "field_id" ) ) {
@@ -776,13 +776,13 @@ if ( ! does_field_exist( "codes_translations", "field_id" ) ) {
   `lang` char(2) NOT NULL default '',
   PRIMARY KEY  (`field_id`,`code`,`lang`)
 )";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "orders", "approved" ) ) {
 
 	$sql = "ALTER TABLE `orders` ADD `approved` SET('Y','N') NOT NULL default 'N'";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 
 	$sql = "select * from blocks group by order_id ";
 	$res = mysqli_query( $GLOBALS['connection'], $sql );
@@ -796,7 +796,7 @@ if ( ! does_field_exist( "orders", "approved" ) ) {
 if ( ! does_field_exist( "orders", "published" ) ) {
 
 	$sql = "ALTER TABLE `orders` ADD `published` set('Y','N') NOT NULL default ''";
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 
 	$sql = "select * from blocks group by order_id ";
 	$res = mysqli_query( $GLOBALS['connection'], $sql );
@@ -826,7 +826,7 @@ if ( ! does_field_exist( "categories", "category_id" ) ) {
   PRIMARY KEY  (`category_id`),
   KEY `composite_index` (`parent_category_id`,`category_id`))";
 
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 }
 
 if ( ! does_field_exist( "ads", "ad_id" ) ) {
@@ -859,7 +859,7 @@ if ( ! does_field_exist( "ads", "ad_id" ) ) {
 			) ";
 	}
 
-	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Please run the following query manually from PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
+	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>" . mysqli_error( $GLOBALS['connection'] ) . "<br>Пожалуйста, выполните следующий запрос вручную из PhpMyAdmin:</b><br><pre>$sql</pre><br>" );
 
 	// populate the ads table
 
@@ -941,7 +941,7 @@ if ( $row['val'] == '' ) {
 	mysqli_query( $GLOBALS['connection'], $sql );
 }
 
-$lang_filename = "english.php";
+$lang_filename = "russian.php";
 
 $sql = "SELECT * FROM lang  ";
 $result = mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) );
@@ -959,7 +959,7 @@ while ( $row = mysqli_fetch_array( $result ) ) {
 
 			echo "Merging language strings for $lang_filename...";
 
-			include( "../lang/english_default.php" );
+			include( "../lang/russian_default.php" );
 			$source_label = $label; // default english labels
 			include( "../lang/" . $lang_filename );
 			$dest_label = $label; // dest labels
@@ -1009,13 +1009,13 @@ if ( $done ) {
 if ( is_writable( "../upload_files/docs/" ) ) {
 	//echo "- upload_files/docs/ directory is writeable. (OK)<br>";
 } else {
-	echo "- upload_files/docs/ directory is not writable. Give write permissions (777) to upload_files/docs/ directory<br>";
+	echo "- upload_files/docs/ каталог не доступен для записи. Предоставить права на запись (777) в каталог upload_files/docs/directory<br>";
 }
 
 if ( is_writable( "../upload_files/images/" ) ) {
 	//echo "- upload_files/images/ directory is writeable. (OK)<br>";
 } else {
-	echo "- upload_files/images/ directory is not writable. Give write permissions (777) to upload_files/docs/ directory<br>";
+	echo "- upload_files/images/ каталог не доступен для записи. Предоставить права на запись (777) в каталог upload_files/docs/directory<br>";
 }
 
 ?>

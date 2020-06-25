@@ -122,19 +122,19 @@ function validate_input() {
 
 	if ( isset( $_FILES['nfs_block'] ) && $_FILES['nfs_block']['tmp_name'] != '' ) {
 		if ( ! is_allowed_grid_file( 'nfs_block' ) ) {
-			$error .= "- Not For Sale Block must be a valid PNG file.<br>";
+			$error .= "- Не для продажи Block must be a valid PNG file.<br>";
 		}
 	}
 
 	if ( isset( $_FILES['usr_grid_block'] ) && $_FILES['usr_grid_block']['tmp_name'] != '' ) {
 		if ( ! is_allowed_grid_file( 'usr_grid_block' ) ) {
-			$error .= "- Not For Sale Block must be a valid PNG file.<br>";
+			$error .= "- Не для продажи Block must be a valid PNG file.<br>";
 		}
 	}
 
 	if ( isset( $_FILES['usr_nfs_block'] ) && $_FILES['usr_nfs_block']['tmp_name'] != '' ) {
 		if ( ! is_allowed_grid_file( 'usr_nfs_block' ) ) {
-			$error .= "- User's Not For Sale Block must be a valid PNG file.<br>";
+			$error .= "- User's Не для продажи Block must be a valid PNG file.<br>";
 		}
 	}
 
@@ -582,7 +582,7 @@ if ( ( isset( $_REQUEST['new'] ) && $_REQUEST['new'] != '' ) || ( isset( $_REQUE
                             <td><input type="file" name="grid_block" size="10"></td>
                         </tr>
                         <tr bgcolor="#ffffff">
-                            <td bgColor="#eaeaea"><b><font size="2" face="Arial">Not For Sale Block<?php display_reset_link( $BID, 'nfs_block' ); ?></font></b></td>
+                            <td bgColor="#eaeaea"><b><font size="2" face="Arial">Не для продажи Block<?php display_reset_link( $BID, 'nfs_block' ); ?></font></b></td>
                             <td bgcolor='#867C6F' <?php $valid = validate_block_size( 'nfs_block', $BID );
 							if ( ! $valid ) {
 								echo $size_error_style;
@@ -613,7 +613,7 @@ if ( ( isset( $_REQUEST['new'] ) && $_REQUEST['new'] != '' ) || ( isset( $_REQUE
                             <td><input type="file" name="usr_grid_block" size="10"></td>
                         </tr>
                         <tr bgcolor="#ffffff">
-                            <td bgColor="#eaeaea"><b><font size="2" face="Arial">Not For Sale Block<?php display_reset_link( $BID, 'usr_nfs_block' ); ?></font></b></td>
+                            <td bgColor="#eaeaea"><b><font size="2" face="Arial">Не для продажи Block<?php display_reset_link( $BID, 'usr_nfs_block' ); ?></font></b></td>
                             <td bgcolor='#867C6F' <?php $valid = validate_block_size( 'usr_nfs_block', $BID );
 							if ( ! $valid ) {
 								echo $size_error_style;
@@ -763,7 +763,7 @@ function render_offer( $price, $currency, $max_orders, $days_expire, $package_id
 					<?php }
 				} ?>
             </td>
-            <td><font size="2"><a href='inventory.php?action=edit&BID=<?php echo $row['banner_id']; ?>'>Edit</a> / <a href="packs.php?BID=<?php echo $row['banner_id']; ?>"> Packages</a><?php if ( $row['banner_id'] != '1' ) { ?> / <a href='inventory.php?action=delete&BID=<?php echo $row['banner_id']; ?>'>Delete</a><?php } ?></font></td>
+            <td><font size="2"><a href='inventory.php?action=edit&BID=<?php echo $row['banner_id']; ?>'>Edit</a> / <a href="packs.php?BID=<?php echo $row['banner_id']; ?>"> Управление сетками</a><?php if ( $row['banner_id'] != '1' ) { ?> / <a href='inventory.php?action=delete&BID=<?php echo $row['banner_id']; ?>'>Delete</a><?php } ?></font></td>
             <td><font size="2"><?php echo get_clicks_for_today( $row['banner_id'] ); ?></font></td>
             <td><font size="2"><?php echo get_clicks_for_banner( $row['banner_id'] ); ?></font></td>
 

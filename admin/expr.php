@@ -89,5 +89,5 @@ if ( EMAIL_USER_EXPIRE_WARNING == 'YES' ) {
     </table>
 	<?php
 } else {
-	echo "Expiration warnings not enabled. You can enable them form Main Config.";
+	echo "Expiration warnings not enabled. You can enable them form Конфигурации.";
 }

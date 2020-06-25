@@ -332,7 +332,7 @@ if ( $_REQUEST['show'] == 'WA' ) {
 
 switch ( $_REQUEST['show'] ) {
 	case 'WA':
-		echo '<p>Showing new orders waiting</p>';
+		echo '<p>Showing new Ожидание заказов</p>';
 		break;
 	case 'CO':
 		echo '<p>Showing completed orders</p>';

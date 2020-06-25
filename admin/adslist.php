@@ -46,15 +46,19 @@ $mode = $_REQUEST['mode'];
 ?>
 
 <div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000; "></div>
-<b>[Ads List]</b><span style="background-color: <?php if ( ( $_REQUEST['mode'] != 'edit' ) ) {
+<b>[Список объявлений]</b>
+<span style="background-color: <?php if ( ( $_REQUEST['mode'] != 'edit' ) ) {
 	echo "#F2F2F2";
-} ?>; border-style:outset; padding: 5px;"><a href="adform.php?mode=view">View Form</a></span> <span style="background-color:  <?php if ( ( $_REQUEST['mode'] == 'edit' ) && ( $_REQUEST['NEW_FIELD'] == '' ) ) {
+} ?>; border-style:outset; padding: 5px;"><a href="adform.php?mode=view">Посмотреть форму</a>
+</span> <span style="background-color:  <?php if ( ( $_REQUEST['mode'] == 'edit' ) && ( $_REQUEST['NEW_FIELD'] == '' ) ) {
 	echo "#FFFFCC";
-} ?>; border-style:outset; padding: 5px;"><a href="adform.php?mode=edit">Edit Fields</a></span> <span style="background-color: <?php if ( ( $_REQUEST['mode'] == 'edit' ) && ( $_REQUEST['NEW_FIELD'] != '' ) ) {
+} ?>; border-style:outset; padding: 5px;"><a href="adform.php?mode=edit">Редактировать поля</a></span>
+<span style="background-color: <?php if ( ( $_REQUEST['mode'] == 'edit' ) && ( $_REQUEST['NEW_FIELD'] != '' ) ) {
 	echo "#FFFFCC";
 } else {
 	echo "#F2F2F2";
-} ?> ; border-style:outset; padding: 5px;"><a href="adform.php?NEW_FIELD=YES&mode=edit">New Field</a></span> &nbsp; &nbsp; <span style="background-color: <?php echo "#FFFFCC"; ?> ; border-style:outset; padding: 5px;"><a href="adslist.php">Ads List</a></span>
+} ?> ; border-style:outset; padding: 5px;"><a href="adform.php?NEW_FIELD=YES&mode=edit">Новое поле</a></span> &nbsp; &nbsp;
+<span style="background-color: <?php echo "#FFFFCC"; ?> ; border-style:outset; padding: 5px;"><a href="adslist.php">Список объявлений</a></span>
 
 <hr>
 
@@ -281,7 +285,7 @@ if ( $col_row['column_id'] != '' ) {
 </form>
 
 <hr>
-Here are the columns that will appear on the ad list:
+Here are the columns that will appear on the Список объявлений:
 <table border='0' width="99%" id='resumelist' cellspacing="1" cellpadding="5" align="center">
 	<?php
 	global $tag_to_field_id;

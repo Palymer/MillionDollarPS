@@ -494,7 +494,7 @@ NOTES<br>
                 <p><span style="font-family: Verdana,sans-serif; font-size: x-small; "><b>SMTP Settings</b><br>
 	  <input type="checkbox" name="USE_SMTP" value="YES"  <?php if ( USE_SMTP == 'YES' ) {
 		  echo " checked ";
-	  } ?> >Enable SMTP Server. (All outgoing email will be sent via authenticated SMTP server connection. By default, the email is sent using the PHP mail() function, and there is no need to turn this option on. Please make sure to fill in all the fields if you enable this option. POP port setting is used to verify that the script can connect to a POP account to check if the username and password was correctly filled in when the test button is clicked. )<br>
+	  } ?> >Enable SMTP Server. (All Исходящие Email will be sent via authenticated SMTP server connection. By default, the email is sent using the PHP mail() function, and there is no need to turn this option on. Please make sure to fill in all the fields if you enable this option. POP port setting is used to verify that the script can connect to a POP account to check if the username and password was correctly filled in when the test button is clicked. )<br>
 	  </span>
                 </p></td>
         </tr>
@@ -583,7 +583,7 @@ NOTES<br>
 
 		?>
         <tr>
-            <td bgcolor="#e6f2ea"><span style="font-family: Verdana,sans-serif; font-size: xx-small; ">Outgoing email queue settings</span></td>
+            <td bgcolor="#e6f2ea"><span style="font-family: Verdana,sans-serif; font-size: xx-small; ">Исходящие Email queue settings</span></td>
             <td bgcolor="#e6f2ea"><span style="font-family: Verdana,sans-serif; font-size: xx-small; ">
       Send a maxiumum of <input type="text" name="EMAILS_PER_BATCH" size="3" value="<?php echo EMAILS_PER_BATCH; ?>">emails per batch (enter a number > 0)<br>
 	  On error, retry <input type="text" name="EMAILS_MAX_RETRY" size="3" value="<?php echo EMAILS_MAX_RETRY; ?>"> times before giving up. (recommened: 15)<br>

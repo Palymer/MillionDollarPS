@@ -59,10 +59,10 @@ if ( $result = mysqli_query( $GLOBALS['connection'], $sql ) ) {
     <h3>Next Steps</h3>
     <ol>
         <li><a target="_blank" href="install.php?action=delete">Click here</a> to delete this file (/admin/install.php) from the server.</li>
-        <li><a target="_blank" href="<?php echo htmlspecialchars( BASE_HTTP_PATH, ENT_QUOTES, 'UTF-8' ); ?>admin/">Go to Admin</a> &gt; Main Config and configure it to your liking. Default password is: <?php echo htmlspecialchars( ADMIN_PASSWORD, ENT_QUOTES, 'UTF-8' ); ?></li>
-        <li>Install, enable and configure a payment module under Payment Modules.</li>
-        <li>Edit your grid settings under Manage Grids.</li>
-        <li>Run the Process Pixels task from the admin area to generate your initial grid image.</li>
+        <li><a target="_blank" href="<?php echo htmlspecialchars( BASE_HTTP_PATH, ENT_QUOTES, 'UTF-8' ); ?>admin/">Go to Admin</a> &gt; Конфигурации and configure it to your liking. Default password is: <?php echo htmlspecialchars( ADMIN_PASSWORD, ENT_QUOTES, 'UTF-8' ); ?></li>
+        <li>Install, enable and configure a payment module under Модули оплаты.</li>
+        <li>Edit your grid settings under Управление сетками.</li>
+        <li>Run the Пиксели в процессе task from the admin area to generate your initial grid image.</li>
     </ol>
 	<?php
 	die();
@@ -106,13 +106,13 @@ if ( is_writable( "../lang/english.php" ) ) {
 if ( is_writable( "../upload_files/docs/" ) ) {
 	echo "- upload_files/docs/ directory is writeable. (OK)<br>";
 } else {
-	echo "- upload_files/docs/ directory is not writable. Give write permissions (777) to upload_files/docs/ directory<br>";
+	echo "- upload_files/docs/ каталог не доступен для записи. Предоставить права на запись (777) в каталог upload_files/docs/directory<br>";
 }
 
 if ( is_writable( "../upload_files/images/" ) ) {
 	echo "- upload_files/images/ directory is writeable. (OK)<br>";
 } else {
-	echo "- upload_files/images/ directory is not writable. Give write permissions (777) to upload_files/docs/ directory<br>";
+	echo "- upload_files/images/ каталог не доступен для записи. Предоставить права на запись (777) в каталог upload_files/docs/directory<br>";
 }
 
 // check HTMLPurifier permissions

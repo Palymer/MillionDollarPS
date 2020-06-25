@@ -64,7 +64,7 @@ $res = mysqli_query( $GLOBALS['connection'], $sql );
 </form>
 <hr>
 <p>
-    Here is the list of your top advertisers for the selected grid. <b>To have this list on your own page, copy and paste the following HTML code.</b>
+    Here is the list of your Лучшие рекламодатели for the selected grid. <b>To have this list on your own page, copy and paste the following HTML code.</b>
 
 </p>
 <?php
