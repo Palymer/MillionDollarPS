@@ -180,7 +180,7 @@ if ( isset( $_REQUEST['ad_id'] ) && is_numeric( $_REQUEST['ad_id'] ) ) {
 
     <form name="bidselect" method="post" action="ads.php">
 
-        Select grid: <select name="BID" onchange="mds_submit(this)">
+        Выберите сетку: <select name="BID" onchange="mds_submit(this)">
             <option></option>
 			<?php
 			while ( $row = mysqli_fetch_array( $res ) ) {

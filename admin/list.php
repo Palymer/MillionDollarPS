@@ -47,7 +47,7 @@ $res = mysqli_query( $GLOBALS['connection'], $sql );
 ?>
 <form name="bidselect" method="post" action="list.php">
     <input type="hidden" name="old_order_id" value="<?php echo $order_id; ?>">
-    Select grid: <select name="BID" onchange="mds_submit(this)">
+    Выберите сетку: <select name="BID" onchange="mds_submit(this)">
 
 		<?php
 		while ( $row = mysqli_fetch_array( $res ) ) {
@@ -64,7 +64,7 @@ $res = mysqli_query( $GLOBALS['connection'], $sql );
 </form>
 <hr>
 <p>
-    Here is the list of your Лучшие рекламодатели for the selected grid. <b>To have this list on your own page, copy and paste the following HTML code.</b>
+    Вот список ваших лучших рекламодателей по выбранной сетке. <b>Чтобы разместить этот список на своей странице, скопируйте и вставьте следующий HTML-код.</b>
 
 </p>
 <?php

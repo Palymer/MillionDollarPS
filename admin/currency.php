@@ -95,7 +95,7 @@ if ( $_REQUEST['action'] == 'delete' ) {
 		mysqli_query( $GLOBALS['connection'], $sql ) or die( mysqli_error( $GLOBALS['connection'] ) . $sql );
 	} else {
 
-		echo "<p><b>Cannot delete currency: reserved by the system</b></p>";
+		echo "<p><b>Невозможно удалить currency: reserved by the system</b></p>";
 	}
 }
 
@@ -135,14 +135,14 @@ if ( $_REQUEST['submit'] != '' ) {
     <table border="0" cellSpacing="1" cellPadding="3" bgColor="#d9d9d9">
         <tr bgColor="#eaeaea">
             <td><span style="font-size: x-small; "><b>Currency</b></span></td>
-            <td><span style="font-size: x-small; "><b>Code</b></span></td>
+            <td><span style="font-size: x-small; "><b>Код</b></span></td>
             <td><span style="font-size: x-small; "><b>Rate</b></span></td>
             <td><span style="font-size: x-small; "><b>Sign</b></span></td>
             <td><span style="font-size: x-small; "><b>Decimal<br>Places</b></span></td>
             <td><span style="font-size: x-small; "><b>Decimal<br>Point</b></span></td>
-            <td><span style="font-size: x-small; "><b>Thousands<br>Seperator</b></span></td>
+            <td><span style="font-size: x-small; "><b>Thousands<br>Сентябрьerator</b></span></td>
             <td><span style="font-size: x-small; "><b>Is Default</b></span></td>
-            <td><span style="font-size: x-small; "><b>Action</b></span></td>
+            <td><span style="font-size: x-small; "><b>Действие</b></span></td>
         </tr>
 		<?php
 
@@ -161,7 +161,7 @@ if ( $_REQUEST['submit'] != '' ) {
                 <td><span style="font-size: x-small; "><?php echo $row['decimal_point']; ?></span></td>
                 <td><span style="font-size: x-small; "><?php echo $row['thousands_sep']; ?></span></td>
                 <td><span style="font-size: x-small; "><?php echo $row['is_default']; ?></span></td>
-                <td><span style="font-size: x-small; "><?php if ( $row['is_default'] != 'Y' ) { ?><a href='currency.php?action=set_default&code=<?php echo $row['code']; ?>'>Set to Default</a> /<?php } ?> <a href='currency.php?action=edit&code=<?php echo $row['code']; ?>'>Edit</a> / <a href='currency.php?action=delete&code=<?php echo $row['code']; ?>'>Delete</a></span></td>
+                <td><span style="font-size: x-small; "><?php if ( $row['is_default'] != 'Y' ) { ?><a href='currency.php?action=set_default&code=<?php echo $row['code']; ?>'>Set to Default</a> /<?php } ?> <a href='currency.php?action=edit&code=<?php echo $row['code']; ?>'>Редактировать</a> / <a href='currency.php?action=delete&code=<?php echo $row['code']; ?>'>Удалить</a></span></td>
 
             </tr>
 			<?php
@@ -228,7 +228,7 @@ if ( ( $_REQUEST['new'] != '' ) || ( $_REQUEST['action'] == 'edit' ) ) {
                 <td><input size="1" type="text" name="thousands_sep" value="<?php echo $_REQUEST['thousands_sep']; ?>"/>(eg. ,)</td>
             </tr>
         </table>
-        <input type="submit" name="submit" value="Submit">
+        <input type="submit" name="submit" value="ОК">
     </form>
 
 	<?php

@@ -33,16 +33,16 @@
 require_once __DIR__ . "/../include/init.php";
 require( 'admin_common.php' );
 ?>
-<h3>Instructions for manual update</h3>
+<h3>Инструкция по обновлению вручную</h3>
 <p>
-    1. <a href='preview.php' target='_blank'>Click this link</a> to view the entire grid on the screen.
+    1. <a href='preview.php' target='_blank'>Нажмите на эту ссылку</a> для просмотра всей сетки на экране.
 </p>
 <p>
-    2. Take a screenshot of the page. (You can press the 'Print Scr' button if you have a windows PC to copy the a screenshot into the clipboard. You may also use a screen capture tool such as Snag It which will help you capture the whole scrolling window in one go.)
+    2. Сделайте скриншот страницы. (Вы можете нажать кнопку «Печать Scr», если у вас есть компьютер с Windows, чтобы скопировать снимок экрана в буфер обмена. Вы также можете использовать инструмент захвата экрана, такой как Snag It, который поможет вам захватить все окно прокрутки за один раз. )
 </p>
 <p>
-    3. Paste the screenshort into your favorite image editing program. Crop the image to your desired size. Save as 'main.gif'
+    3. Вставьте скриншот в вашу любимую программу для редактирования изображений. Обрезать изображение до желаемого размера. Сохранить как 'main.gif'
 </p>
 <p>
-    4. Upload main.gif into the script's main directory.
+    4. Загрузите main.gif в основной каталог скрипта.
 </p>

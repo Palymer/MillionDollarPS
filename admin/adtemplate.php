@@ -55,15 +55,17 @@ require_once( "../include/ads.inc.php" );
     <span style="background-color: <?php echo "#F2F2F2"; ?> ; border-style:outset; padding: 5px;"><a href="adslist.php">Список объявлений</a></span>
 
     <hr>
-    Here you can edit the template for the ads. The ads are displayed when a mouse is moved over the pixels. <b>You will need to edit this template after inserting or removing a field on the Форма объявления.</b><p>The rules are simple... if you want <b>to display to the value of a field, put two % signs around the field's template tag</b>, like this %TEMPLATE_TAG%. If you want
-    <b>to display the field's label, put two $ signs around the field's template tag</b>, like this $TEMPLATE_TAG$. Use normal HTML to format the ad.</p>
+    Here you can edit the template for the ads. The ads are displayed when a mouse is moved over the pixels.
+    <b>You will need to edit this template after inserting or removing a field on the Форма объявления.</b>
+    <p>The rules are simple... if you want <b> to display to the value of a field, put two % signs around the field's template tag</b>, like this %TEMPLATE_TAG%.
+    If you want <b>to display the field's label, put two $ signs around the field's template tag</b>, like this $TEMPLATE_TAG$. Use normal HTML to format the ad.</p>
 
     <hr>
 
 <?php
 
 global $AVAILABLE_LANGS;
-echo "Current Language: [" . $_SESSION['MDS_LANG'] . "] Select language:";
+echo "Текущий язык: [" . $_SESSION['MDS_LANG'] . "] Выберите язык:";
 
 ?>
 
@@ -95,8 +97,8 @@ if ( ( $_REQUEST['save'] ) ) {
 
 	// save the file.
 
-	include( "../lang/english_default.php" );
-	$source_label = $label; // default english labels
+	include( "../lang/russian_default.php" );
+	$source_label = $label; // русские метки по умолчанию
 	include( "../lang/" . $lang_filename );
 	$dest_label = $label; // dest labels
 
@@ -126,11 +128,11 @@ if ( $_REQUEST['mouseover_ad_template'] == '' ) {
     <form method="POST" action="adtemplate.php">
 
         <textarea name='mouseover_ad_template' rows=10 cols=50><?php echo escape_html( stripslashes( $_REQUEST['mouseover_ad_template'] ) ); ?></textarea><br>
-        <input type="submit" name='save' value="Save">
+        <input type="submit" name='save' value="Сохранить">
     </form>
 
     <hr>
-    <p>Template Preview:</p>
+    <p>Предварительный просмотр шаблона:</p>
 
 <?php
 

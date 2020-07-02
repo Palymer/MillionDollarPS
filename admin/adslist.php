@@ -83,11 +83,11 @@ if ( $_REQUEST['save_col'] != '' ) {
 	}
 
 	if ( ! is_numeric( $_REQUEST['sort_order'] ) ) {
-		$error .= "'Sort order' must be a number. <br>";
+		$error .= "'Sort order' должен быть числом. <br>";
 	}
 
 	if ( ! is_numeric( $_REQUEST['truncate_length'] ) ) {
-		$error .= "'Truncate' must be a number. <br>";
+		$error .= "'Truncate' должен быть числом. <br>";
 	}
 
 	if ( is_numeric( $_REQUEST['field_id'] ) ) {
@@ -97,7 +97,7 @@ if ( $_REQUEST['save_col'] != '' ) {
 		$field_row = mysqli_fetch_array( $result );
 	} else {
 
-		$field_row['field_type'] = 'TEXT'; // default storage type.
+		$field_row['field_type'] = 'TEXT'; // стандарт сохранения бд.
 		$field_row['field_id']   = $_REQUEST['field_id'];
 
 		switch ( $_REQUEST['field_id'] ) {
@@ -143,9 +143,9 @@ if ( $_REQUEST['save_col'] != '' ) {
 
 	if ( $error == '' ) {
 		$result = mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) . $sql );
-		echo "Column Updated.<br>";
+		echo "Столбец обновлен.<br>";
 	} else {
-		echo "<span style=\"color: red; \">Cannot save due to the following errors:</span><br>";
+		echo "<span style=\"color: red; \">Не удается сохранить из-за следующих ошибок:</span><br>";
 		echo $error;
 	}
 
@@ -160,7 +160,7 @@ if ( $_REQUEST['save_col'] != '' ) {
 <?php
 if ( $col_row['column_id'] != '' ) {
 
-	echo '<a href="adslist.php">+ Add new column</a>';
+	echo '<a href="adslist.php">+ Добавить новый столбец</a>';
 }
 
 ?>
@@ -174,11 +174,11 @@ if ( $col_row['column_id'] != '' ) {
 				<?php
 				if ( $col_row['column_id'] == '' ) {
 					?>
-                    <b>Add a new column to the list</b>
+                    <b>Добавить новый столбец в список</b>
 					<?php
 				} else {
 					?>
-                    <b>Edit column</b>
+                    <b>Редактировать столбец</b>
 
 					<?php
 				}
@@ -187,7 +187,7 @@ if ( $col_row['column_id'] != '' ) {
             </td>
         </tr>
         <tr>
-            <td>Column</td>
+            <td>Столбец</td>
             <td><select name="field_id" size=4>
 
 					<?php
@@ -200,7 +200,7 @@ if ( $col_row['column_id'] != '' ) {
 
 		<?php
 
-		if ( $_REQUEST['column_id'] == '' ) { // get the last sort order
+		if ( $_REQUEST['column_id'] == '' ) { // получить последний порядок сортировки
 
 			$sql = "SELECT max(sort_order) FROM form_lists WHERE field_id=1 GROUP BY column_id ";
 			$result = mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) . $sql );
@@ -211,73 +211,73 @@ if ( $col_row['column_id'] != '' ) {
 		?>
 
         <tr>
-            <td>Order</td>
+            <td>Порядок</td>
             <td><input type="text" name="sort_order" size="1" value="<?php echo $col_row['sort_order']; ?>">(1=first, 2=2nd, etc.)</td>
         </tr>
         <tr>
-            <td>Linked?</td>
+            <td>Связанный?</td>
             <td><input <?php if ( $col_row['linked'] != 'Y' ) {
 					echo ' checked ';
-				} ?> type="radio" name="linked" value='N'>No / <input <?php if ( $col_row['linked'] == 'Y' ) {
+				} ?> type="radio" name="linked" value='N'>Нет / <input <?php if ( $col_row['linked'] == 'Y' ) {
 					echo ' checked ';
-				} ?> type="radio" name="linked" value='Y'> Yes - link to view full record
+				} ?> type="radio" name="linked" value='Y'> Да - ссылка для просмотра полной записи
 
         </tr>
         <tr>
-            <td>Admin Only?</td>
+            <td>Только администратор?</td>
             <td><input <?php if ( $col_row['admin'] != 'Y' ) {
 					echo ' checked ';
-				} ?> type="radio" name="admin_only" value='N'>No / <input <?php if ( $col_row['admin'] == 'Y' ) {
+				} ?> type="radio" name="admin_only" value='N'>Нет / <input <?php if ( $col_row['admin'] == 'Y' ) {
 					echo ' checked ';
-				} ?> type="radio" name="admin_only" value='Y'> Yes
+				} ?> type="radio" name="admin_only" value='Y'> Да
 
         </tr>
         <tr>
-            <td>Clean format?</td>
+            <td>Чистый формат?</td>
             <td><input <?php if ( $col_row['clean_format'] != 'Y' ) {
 					echo ' checked ';
-				} ?> type="radio" name="clean_format" value='N'>No / <input <?php if ( $col_row['clean_format'] == 'Y' ) {
+				} ?> type="radio" name="clean_format" value='N'>Нет / <input <?php if ( $col_row['clean_format'] == 'Y' ) {
 					echo ' checked ';
-				} ?> type="radio" name="clean_format" value='Y'> Yes - Clean punctuation. Eg. if someone writes A,B,C the system will change to A, B, C
+				} ?> type="radio" name="clean_format" value='Y'> Да - Чистая пунктуация. Например. если кто-то пишет A,B,C, система изменится на A, B, C
 
         </tr>
         <tr>
-            <td>Is sortable?</td>
+            <td>Сортируется?</td>
             <td><input <?php if ( $col_row['is_sortable'] != 'Y' ) {
 					echo ' checked ';
-				} ?> type="radio" name="is_sortable" value='N'>No / <input <?php if ( $col_row['is_sortable'] == 'Y' ) {
+				} ?> type="radio" name="is_sortable" value='N'>Нет / <input <?php if ( $col_row['is_sortable'] == 'Y' ) {
 					echo ' checked ';
-				} ?> type="radio" name="is_sortable" value='Y'> Yes - users can sort the records by this coulum, when clicked.
+				} ?> type="radio" name="is_sortable" value='Y'> Да - пользователи могут сортировать записи по этому столбцу при нажатии.
 
         </tr>
         <tr>
-            <td>Is in Bold?</td>
+            <td>Выделено жирным шрифтом?</td>
             <td><input <?php if ( $col_row['is_bold'] != 'Y' ) {
 					echo ' checked ';
-				} ?> type="radio" name="is_bold" value='N'>No / <input <?php if ( $col_row['is_bold'] == 'Y' ) {
+				} ?> type="radio" name="is_bold" value='N'>Нет / <input <?php if ( $col_row['is_bold'] == 'Y' ) {
 					echo ' checked ';
-				} ?> type="radio" name="is_bold" value='Y'> Yes
+				} ?> type="radio" name="is_bold" value='Y'> Да
 
         </tr>
         <tr>
-            <td>No Wrap?</td>
+            <td>Без выделения?</td>
             <td><input <?php if ( $col_row['no_wrap'] != 'Y' ) {
 					echo ' checked ';
-				} ?> type="radio" name="no_wrap" value='N'>No / <input <?php if ( $col_row['no_wrap'] == 'Y' ) {
+				} ?> type="radio" name="no_wrap" value='N'>Нет / <input <?php if ( $col_row['no_wrap'] == 'Y' ) {
 					echo ' checked ';
-				} ?> type="radio" name="no_wrap" value='Y'> Yes
+				} ?> type="radio" name="no_wrap" value='Y'> Да
 
         </tr>
         <tr>
-            <td>Truncate (cut) to:</td>
+            <td>Обрезать (разрезать) до:</td>
             <td><input type="text" name="truncate_length" size="2" value='<?php if ( $col_row['truncate_length'] == '' ) {
 					$col_row['truncate_length'] = '0';
 				}
-				echo $col_row['truncate_length']; ?>' size=''> characters. (0 = do not truncate)
+				echo $col_row['truncate_length']; ?>' size=''> символов. (0 = не усекать)
 
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" name="save_col" value="Save"></td>
+            <td colspan="2"><input type="submit" name="save_col" value="Сохранить"></td>
         </tr>
 
     </table>
@@ -285,7 +285,7 @@ if ( $col_row['column_id'] != '' ) {
 </form>
 
 <hr>
-Here are the columns that will appear on the Список объявлений:
+Вот столбцы, которые появятся на списоке объявлений:
 <table border='0' width="99%" id='resumelist' cellspacing="1" cellpadding="5" align="center">
 	<?php
 	global $tag_to_field_id;

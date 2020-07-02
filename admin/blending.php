@@ -103,7 +103,7 @@ $res = mysqli_query( $GLOBALS['connection'], $sql );
 
 <form name="bidselect" method="post" action="blending.php">
 
-    Select grid: <select name="BID" onchange="mds_submit(this)">
+    Выберите сетку: <select name="BID" onchange="mds_submit(this)">
 		<?php
 		while ( $row = mysqli_fetch_array( $res ) ) {
 

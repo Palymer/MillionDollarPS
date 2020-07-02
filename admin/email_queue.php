@@ -184,89 +184,89 @@ if ( USE_SMTP != 'YES' ) {
 
         <tr>
             <td width="63" bgcolor="#EDF8FC" valign="top">
-                <p align="right"><font size="2" face="Arial"><b>To Addr</b></font></td>
+                <p align="right"><font size="2" face="Arial"><b> В адрес </b></font></td>
             <td width="286" bgcolor="#EDF8FC" valign="top">
                 <font face="Arial">
                     <input type="text" name="q_to_add" size="39" value="<?php echo $q_to_add; ?>"/></font></td>
             <td width="71" bgcolor="#EDF8FC" valign="top">
-                <p align="right"><b><font face="Arial" size="2">To Name</font></b></td>
+                <p align="right"><b><font face="Arial" size="2">К имени</font></b></td>
             <td width="299" bgcolor="#EDF8FC" valign="top">
 
                 <input type="text" name="q_to_name" size="28" value="<?php echo $q_to_name; ?>"/></td>
         </tr>
         <tr>
             <td width="63" bgcolor="#EDF8FC" valign="top">
-                <p align="right"><font size="2" face="Arial"><b>Subject</b></font></td>
+                <p align="right"><font size="2" face="Arial"><b> Тема</b></font></td>
             <td width="286" bgcolor="#EDF8FC" valign="top">
                 <font face="Arial">
                     <input type="text" name="q_subj" size="39" value="<?php echo $q_subj; ?>"/></font></td>
             <td width="71" bgcolor="#EDF8FC" valign="top">
-                <p align="right"><b><font face="Arial" size="2">Message</font></b></td>
+                <p align="right"><b><font face="Arial" size="2"> Сообщение</font></b></td>
             <td width="299" bgcolor="#EDF8FC" valign="top">
 
                 <input type="text" name="q_msg" size="28" value="<?php echo $q_msg; ?>"/></td>
         </tr>
         <tr>
             <td width="63" bgcolor="#EDF8FC" valign="top">
-                <p align="right"><font size="2" face="Arial"><b>Status</b></font></td>
+                <p align="right"><font size="2" face="Arial"><b> Статус</b></font></td>
             <td width="286" bgcolor="#EDF8FC" valign="top">
                 <font face="Arial">
                     <select name="q_status">
                         <option value='' <?php if ( $_REQUEST['q_status'] == '' ) {
-							echo ' selected ';
+							echo 'выбран';
 						} ?>></option>
                         <option value='queued' <?php if ( $_REQUEST['q_status'] == 'queued' ) {
-							echo ' selected ';
+							echo 'выбран';
 						} ?>>queued
                         </option>
                         <option value='error' <?php if ( $_REQUEST['q_status'] == 'error' ) {
-							echo ' selected ';
+							echo 'выбран';
 						} ?>>error
                         </option>
                         <option value='sent' <?php if ( $_REQUEST['q_status'] == 'sent' ) {
-							echo ' selected ';
+							echo 'выбран';
 						} ?>>sent
                         </option>
                     </select>
                 </font></td>
             <td width="71" bgcolor="#EDF8FC" valign="top">
-                <p align="right"><b><font face="Arial" size="2">Type</font></b></td>
+                <p align="right"><b><font face="Arial" size="2"> Тип</font></b></td>
             <td width="299" bgcolor="#EDF8FC" valign="top">
                 <select name="q_type">
                     <option value='' <?php if ( $_REQUEST['q_type'] == '' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?>></option>
                     <option value='1' <?php if ( $_REQUEST['q_type'] == '1' ) {
-						echo ' selected ';
-					} ?>>1 - Complete Order
+						echo 'выбран';
+					} ?>>1 - Завершить заказ
                     </option>
                     <option value='2' <?php if ( $_REQUEST['q_type'] == '2' ) {
-						echo ' selected ';
-					} ?>>2 - Confirm Order
+						echo 'выбран';
+					} ?>>2 - Подтвердить заказ
                     </option>
                     <option value='3' <?php if ( $_REQUEST['q_type'] == '3' ) {
-						echo ' selected ';
-					} ?>>3 - Pend Order
+						echo 'выбран';
+					} ?>>3 - Отложить заказ
                     </option>
                     <option value='4' <?php if ( $_REQUEST['q_type'] == '4' ) {
-						echo ' selected ';
-					} ?>>4 - Expire Order
+						echo 'выбран';
+					} ?>>4 - Срок действия заказа
                     </option>
                     <option value='5' <?php if ( $_REQUEST['q_type'] == '5' ) {
-						echo ' selected ';
-					} ?>>5 - Account Confirmation
+						echo 'выбран';
+					} ?>>5 - Подтверждение аккаунта
                     </option>
                     <option value='6' <?php if ( $_REQUEST['q_type'] == '6' ) {
-						echo ' selected ';
-					} ?>>6 - Forgot Pass
+						echo 'выбран';
+					} ?>>6 - Забыли пароль
                     </option>
                     <option value='7' <?php if ( $_REQUEST['q_type'] == '7' ) {
-						echo ' selected ';
-					} ?>>7 - Pixels Published
+						echo 'выбран';
+					} ?>>7 - Пиксели опубликованы
                     </option>
                     <option value='8' <?php if ( $_REQUEST['q_type'] == '8' ) {
-						echo ' selected ';
-					} ?>>8 - Order Renewed
+						echo 'выбран';
+					} ?>>8 - Заказ обновлен
                     </option>
                 </select>
 
@@ -275,7 +275,7 @@ if ( USE_SMTP != 'YES' ) {
         <tr>
             <td width="731" bgcolor="#EDF8FC" colspan="4">
                 <font face="Arial"><b>
-                        <input type="submit" value="Find Emails" name="B1" style="float: left"><?php if ( $search == 'y' ) { ?>&nbsp; </b></font><b>[<font face="Arial"><a href="<?php echo $_SERVER['PHP_SELF'] ?>">Start a New Search</a></font>]</b><?php } ?></td>
+                        <input type="submit" value="Find Emails" name="B1" style="float: left"><?php if ( $search == 'y' ) { ?>&nbsp; </b></font><b>[<font face="Arial"><a href="<?php echo $_SERVER['PHP_SELF'] ?>">Начать новый поиск</a></font>]</b><?php } ?></td>
         </tr>
     </table>
 <?php
@@ -333,20 +333,20 @@ if ( $count > $records_per_page ) {
 
     <table border="0" cellSpacing="1" cellPadding="3" bgColor="#d9d9d9">
         <tr bgColor="#eaeaea">
-            <td><b><font size="2">Date</b></font></td>
-            <td><b><font size="2">Type</b></font></td>
-            <td><b><font size="2">To Addr</b></font></td>
-            <td><b><font size="2">To Name</b></font></td>
-            <td><b><font size="2">Fr Addr</b></font></td>
-            <td><b><font size="2">Fr Name</b></font></td>
+            <td><b><font size="2">Дата</b></font></td>
+            <td><b><font size="2">Тип</b></font></td>
+            <td><b><font size="2">К адрес</b></font></td>
+            <td><b><font size="2">К имени</b></font></td>
+            <td><b><font size="2">От адрес</b></font></td>
+            <td><b><font size="2">От адрес</b></font></td>
             <td><b><font size="2">Subj</b></font></td>
-            <td><b><font size="2">Msg</b></font></td>
-            <td><b><font size="2">Html Msg</b></font></td>
+            <td><b><font size="2">Сообщение</b></font></td>
+            <td><b><font size="2">Html Сообщение</b></font></td>
             <td><b><font size="2">Att</b></font></td>
-            <td><b><font size="2">Status</b></font></td>
-            <td><b><font size="2">Err</b></font></td>
-            <td><b><font size="2">Retry</b></font></td>
-            <td><b><font size="2">Action</b></font></td>
+            <td><b><font size="2">Статус</b></font></td>
+            <td><b><font size="2">Ошибки</b></font></td>
+            <td><b><font size="2">Повтор</b></font></td>
+            <td><b><font size="2">Действия</b></font></td>
         </tr>
 
 		<?php

@@ -981,7 +981,7 @@ while ( $row = mysqli_fetch_array( $result ) ) {
 			$done = 1;
 		}
 	} else {
-		echo "- lang/$lang_filename.php file is not writable. Give write permissions (666) to lang/english.php file<br>";
+		echo "- lang/$lang_filename.php файл не доступен для записи Предоставить права на запись (666) в файл lang/english.php<br>";
 	}
 }
 

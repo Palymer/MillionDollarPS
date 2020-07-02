@@ -46,7 +46,7 @@ $res = mysqli_query( $GLOBALS['connection'], $sql );
 
     <form name="bidselect" method="post" action="clicks.php">
 
-        Select grid: <select name="BID" onchange="mds_submit(this)">
+        Выберите сетку: <select name="BID" onchange="mds_submit(this)">
 			<?php
 			while ( $row = mysqli_fetch_array( $res ) ) {
 
@@ -206,7 +206,7 @@ if ( $_REQUEST['to_year'] == '' ) {
     <table border="1">
 
         <tr>
-            <td><b>Date</b></td>
+            <td><b>Дата</b></td>
             <td><b>Clicks</b></td>
         </tr>
 

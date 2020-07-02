@@ -84,25 +84,25 @@ if ( $_REQUEST['save'] != '' ) {
 ?>
 
 <h3>
-    Language Translation tool.</h3>
-<b>IMPORTANT:</b> Backup your language files before using this tool! This tool will overwrite any code in the target file with machine-generated code.<br>
+    Инструмент языкового перевода.</h3>
+<b>ВАЖНЫЙ:</b> Сделайте резервную копию ваших языковых файлов перед использованием этого инструмента! Этот инструмент перезапишет любой код в целевом файле с помощью машинного кода.<br>
 <pre>
-INSTRUCTIONS
+ИНСТРУКЦИИ
 
-1. The strings on the left are the original English strings. 
-The strings on the right are for you to edit.
-2. Clicking any of the Save buttons saves all the fields in the from.
-You may click these at any time to Save the entire form.
-3. Some fields have variables such as %SITE_NAME%. These variables get substituted.
-Check the original string on the left to see what variables are available.
-4. HTML is allowed.
-5. If you want to use symbols such as &gt; &lt; or &amp;,
-be sure to write them as HTML entities: &amp;gt; &amp;lt; and &amp;amp;
+1. Строки слева - это оригинальные английские строки.
+Строки справа предназначены для редактирования.
+2. Нажатие любой из кнопок Сохранить сохраняет все поля в поле from.
+Вы можете нажать на них в любое время, чтобы сохранить всю форму.
+3. В некоторых полях есть переменные, такие как% SITE_NAME%. Эти переменные подставляются.
+Проверьте исходную строку слева, чтобы увидеть, какие переменные доступны.
+4. HTML разрешен.
+5. Если вы хотите использовать такие символы, как &gt; &lt; или &amp;,
+обязательно запишите их как HTML-сущности: &amp;gt; &amp;lt; и &amp;amp;
 </pre>
 <?php
 
 if ( ! is_writeable( "../lang/" . $lang_filename ) ) {
-	print ( "<span style='color:red'><b>Warning:</b></span> The file ../lang/" . $lang_filename . " is not writable. You must give it write premissions for changes to take effect. You may set back to read-only permissions after saving changes.<br>" );
+	print ( "<span style='color:red'><b>Ошибка:</b></span> Файл ../lang/" . $lang_filename . " не доступно для записи Вы должны дать ему разрешение на запись, чтобы изменения вступили в силу. Вы можете установить права доступа только для чтения после сохранения изменений.<br>" );
 }
 
 ?>
@@ -112,8 +112,8 @@ if ( ! is_writeable( "../lang/" . $lang_filename ) ) {
 
     <table style="margin:0 auto;width:calc(100% - 205px);border:none;padding:3px;background:#d9d9d9;">
         <tr style="background:#eaeaea">
-            <td><b>Source Language: English (Factory standard english_default.php)</b><br><br></td>
-            <td><b>Target Language: <?php echo $lang_name; ?> (<?php echo $lang_filename; ?>)</b><br><br></td>
+            <td><b>Исходный язык: английский (заводской стандарт english_default.php)</b><br><br></td>
+            <td><b>Язык перевода: <?php echo $lang_name; ?> (<?php echo $lang_filename; ?>)</b><br><br></td>
         </tr>
 
 		<?php
@@ -160,7 +160,7 @@ if ( ! is_writeable( "../lang/" . $lang_filename ) ) {
 			<?php
 			if ( $i > 5 ) {
 
-				echo "<tr style='background:#BDD5E6'><td></td><td><input type='submit' name='save' value='Save'></td></tr>";
+				echo "<tr style='background:#BDD5E6'><td></td><td><input type='submit' name='save' value='Сохранить'></td></tr>";
 				$i = 0;
 			}
 		}
@@ -169,7 +169,7 @@ if ( ! is_writeable( "../lang/" . $lang_filename ) ) {
 			?>
             <tr style='background:#BDD5E6'>
                 <td></td>
-                <td><input type='submit' name='save' value='Save'></td>
+                <td><input type='submit' name='save' value='Сохранить'></td>
             </tr>
 			<?php
 		}

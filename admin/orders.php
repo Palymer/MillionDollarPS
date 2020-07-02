@@ -109,195 +109,195 @@ $q_string   = urlencode( "&q_name=$q_name&q_username=$q_username&q_email=$q_emai
     <table border="0" cellpadding="2" cellspacing="0" style="border-collapse: collapse" id="AutoNumber2" width="100%">
         <tr>
             <td width="63" bgcolor="#EDF8FC" valign="top">
-                <p><b>Name</b></p>
+                <p><b>Имя</b></p>
             </td>
             <td width="286" bgcolor="#EDF8FC" valign="top">
                 <input type="text" name="q_name" size="39" value="<?php echo $q_name; ?>"/></td>
             <td width="71" bgcolor="#EDF8FC" valign="top">
-                <p align="right"><b>Username</b></td>
+                <p align="right"><b>Имя</b></td>
             <td width="299" bgcolor="#EDF8FC" valign="top">
                 <input type="text" name="q_username" size="28" value="<?php echo $q_username; ?>"/></td>
         </tr>
         <tr>
             <td width="63" bgcolor="#EDF8FC" valign="top">
-                <p align="right"><b>Date From:</b></td>
+                <p align="right"><b>Дата от:</b></td>
             <td width="286" bgcolor="#EDF8FC" valign="top">
                 <select name="q_aday">
                     <option></option>
                     <option <?php if ( $q_aday == '01' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >1
                     </option>
                     <option <?php if ( $q_aday == '02' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >2
                     </option>
                     <option <?php if ( $q_aday == '03' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >3
                     </option>
                     <option <?php if ( $q_aday == '04' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >4
                     </option>
                     <option <?php if ( $q_aday == '05' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >5
                     </option>
                     <option <?php if ( $q_aday == '06' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >6
                     </option>
                     <option <?php if ( $q_aday == '07' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?>>7
                     </option>
                     <option <?php if ( $q_aday == '08' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?>>8
                     </option>
                     <option <?php if ( $q_aday == '09' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >9
                     </option>
                     <option <?php if ( $q_aday == '25' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >25
                     </option>
                     <option <?php if ( $q_aday == '26' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >26
                     </option>
                     <option <?php if ( $q_aday == '10' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >10
                     </option>
                     <option <?php if ( $q_aday == '11' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> > 11
                     </option>
                     <option <?php if ( $q_aday == '12' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >12
                     </option>
                     <option <?php if ( $q_aday == '13' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >13
                     </option>
                     <option <?php if ( $q_aday == '14' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >14
                     </option>
                     <option <?php if ( $q_aday == '15' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >15
                     </option>
                     <option <?php if ( $q_aday == '16' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >16
                     </option>
                     <option <?php if ( $q_aday == '17' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >17
                     </option>
                     <option <?php if ( $q_aday == '18' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >18
                     </option>
                     <option <?php if ( $q_aday == '19' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >19
                     </option>
                     <option <?php if ( $q_aday == '20' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >20
                     </option>
                     <option <?php if ( $q_aday == '21' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >21
                     </option>
                     <option <?php if ( $q_aday == '22' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >22
                     </option>
                     <option <?php if ( $q_aday == '23' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >23
                     </option>
                     <option <?php if ( $q_aday == '24' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >24
                     </option>
                     <option <?php if ( $q_aday == '27' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >27
                     </option>
                     <option <?php if ( $q_aday == '28' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >28
                     </option>
                     <option <?php if ( $q_aday == '29' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >29
                     </option>
                     <option <?php if ( $q_aday == '30' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >30
                     </option>
                     <option <?php if ( $q_aday == '31' ) {
-						echo ' selected ';
+						echo 'выбран';
 					} ?> >31
                     </option>
                 </select>
                 <select name="q_amon">
                     <option></option>
                     <option <?php if ( $q_amon == '01' ) {
-						echo ' selected ';
-					} ?> value="1">Jan
+						echo 'выбран';
+					} ?> value="1">Январь
                     </option>
                     <option <?php if ( $q_amon == '02' ) {
-						echo ' selected ';
-					} ?> value="2">Feb
+						echo 'выбран';
+					} ?> value="2">Февраль
                     </option>
                     <option <?php if ( $q_amon == '03' ) {
-						echo ' selected ';
-					} ?> value="3">Mar
+						echo 'выбран';
+					} ?> value="3">Март
                     </option>
                     <option <?php if ( $q_amon == '04' ) {
-						echo ' selected ';
-					} ?> value="4">Apr
+						echo 'выбран';
+					} ?> value="4">Апрель
                     </option>
                     <option <?php if ( $q_amon == '05' ) {
-						echo ' selected ';
-					} ?> value="5">May
+						echo 'выбран';
+					} ?> value="5">Май
                     </option>
                     <option <?php if ( $q_amon == '06' ) {
-						echo ' selected ';
-					} ?> value="6">Jun
+						echo 'выбран';
+					} ?> value="6">Июнь
                     </option>
                     <option <?php if ( $q_amon == '07' ) {
-						echo ' selected ';
-					} ?> value="7">Jul
+						echo 'выбран';
+					} ?> value="7">Июль
                     </option>
                     <option <?php if ( $q_amon == '08' ) {
-						echo ' selected ';
-					} ?> value="8">Aug
+						echo 'выбран';
+					} ?> value="8">Август
                     </option>
                     <option <?php if ( $q_amon == '09' ) {
-						echo ' selected ';
-					} ?> value="9">Sep
+						echo 'выбран';
+					} ?> value="9">Сентябрь
                     </option>
                     <option <?php if ( $q_amon == '10' ) {
-						echo ' selected ';
-					} ?> value="10">Oct
+						echo 'выбран';
+					} ?> value="10">Октябрь
                     </option>
                     <option <?php if ( $q_amon == '11' ) {
-						echo ' selected ';
-					} ?> value="11">Nov
+						echo 'выбран';
+					} ?> value="11">Ноябрь
                     </option>
                     <option <?php if ( $q_amon == '12' ) {
-						echo ' selected ';
-					} ?> value="12">Dec
+						echo 'выбран';
+					} ?> value="12">Декабрь
                     </option>
                 </select>
                 <input type="text" name="q_ayear" size="4" value="<?php echo $q_ayear; ?>"/>
@@ -307,7 +307,7 @@ $q_string   = urlencode( "&q_name=$q_name&q_username=$q_username&q_email=$q_emai
         </tr>
         <tr>
             <td width="731" bgcolor="#EDF8FC" colspan="4">
-                <b><input type="submit" value="Find" name="B1" style="float: left"><?php if ( $_REQUEST['search'] == 'search' ) { ?>&nbsp; </b><b>[<a href="<?php echo $_SERVER['PHP_SELF'] ?>?show=<?php echo $_REQUEST['show']; ?>">Start a New Search</a>]</b><?php } ?>
+                <b><input type="submit" value="Find" name="B1" style="float: left"><?php if ( $_REQUEST['search'] == 'search' ) { ?>&nbsp; </b><b>[<a href="<?php echo $_SERVER['PHP_SELF'] ?>?show=<?php echo $_REQUEST['show']; ?>">Новый поиск</a>]</b><?php } ?>
             </td>
         </tr>
     </table>
@@ -332,19 +332,19 @@ if ( $_REQUEST['show'] == 'WA' ) {
 
 switch ( $_REQUEST['show'] ) {
 	case 'WA':
-		echo '<p>Showing new Ожидание заказов</p>';
+		echo '<p>Показаны заказы в ожидании</p>';
 		break;
 	case 'CO':
-		echo '<p>Showing completed orders</p>';
+		echo '<p>Показаны завершенные заказы</p>';
 		break;
 	case 'EX':
-		echo '<p>Showing expired orders.</p>';
+		echo '<p>Показаны истекшие заказы.</p>';
 		break;
 	case 'CA':
-		echo '<p>Showing cancelled orders. Note: Blocks are kept reserved for cancelled orders. Delete the order to free the blocks.</p>';
+		echo '<p>Показаны отмененные заказы. Примечание. Блоки зарезервированы для отмененных заказов. Удалить заказ, чтобы освободить блоки.</p>';
 		break;
 	case 'DE':
-		echo '<p>Showing deleted orders.</p>';
+		echo '<p>Показаны удаленные заказы.</p>';
 		break;
 }
 
@@ -424,7 +424,7 @@ $cur_page ++;
     <table width="100%" cellSpacing="1" cellPadding="3" align="center" bgColor="#d9d9d9" border="0">
         <tr>
             <td colspan="12"> <?php if ( $_REQUEST['show'] != 'DE' ) { ?>
-                    With selected:
+                    С выбранным:
                     <input type="submit" value='Complete' onclick="if (!confirmLink(this, 'Complete for all selected, are you sure?')) return false" name='mass_complete'>
 					<?php
 					if ( $_REQUEST['show'] != 'CA' ) {
@@ -441,15 +441,15 @@ $cur_page ++;
         </tr>
         <tr bgcolor="#eaeaea">
             <td><input type="checkbox" onClick="checkBoxes('orders');"></td>
-            <td><b>Order Date</b></td>
-            <td><b>Customer Name</b></td>
-            <td><b>Username & ID</b></td>
-            <td><b>OrderID</b></td>
-            <td><b>AdID</b></td>
-            <td><b>Grid</b></td>
-            <td><b>Quantity</b></td>
-            <td><b>Amount</b></td>
-            <td><b>Status</b></td>
+            <td><b>Дата заказа</b></td>
+            <td><b>Имя покупателя</b></td>
+            <td><b>Имя пользователя и ИД</b></td>
+            <td><b>ИД заказа</b></td>
+            <td><b>ИД рекламы</b></td>
+            <td><b>Сетка</b></td>
+            <td><b>Количество:</b></td>
+            <td><b>Количество</b></td>
+            <td><b>Статус</b></td>
         </tr>
 		<?php
 		$i = 0;

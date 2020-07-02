@@ -141,7 +141,7 @@ NOTES<br>
                 <span style="font-family: Verdana,sans-serif; font-size: xx-small; "><b>MySQL Settings</b></span></td>
         </tr>
         <tr>
-            <td width="20%" bgcolor="#e6f2ea"><span style="font-family: Verdana,sans-serif; font-size: xx-small; ">MySQL Database Username</span></td>
+            <td width="20%" bgcolor="#e6f2ea"><span style="font-family: Verdana,sans-serif; font-size: xx-small; ">MySQL Database имя пользователя</span></td>
             <td bgcolor="#e6f2ea"><span style="font-family: Verdana,sans-serif; font-size: xx-small; ">
       <input type="text" name="MYSQL_USER" size="29" value="<?php echo MYSQL_USER; ?>"></span></td>
         </tr>
@@ -228,7 +228,7 @@ NOTES<br>
     <table border="0" cellpadding="5" cellspacing="2" style="border-style:groove" width="100%" bgcolor="#FFFFFF">
         <tr>
             <td colspan="2" bgcolor="#e6f2ea">
-                <p><span style="font-family: Verdana,sans-serif; font-size: xx-small; "><b>Grid Image Settings</b></span></td>
+                <p><span style="font-family: Verdana,sans-serif; font-size: xx-small; "><b>Сетка Image Settings</b></span></td>
         </tr>
         <tr>
             <td bgcolor="#e6f2ea" width="20%"><span style="font-family: Verdana,sans-serif; font-size: xx-small; ">
@@ -317,13 +317,13 @@ NOTES<br>
             <td bgcolor="#e6f2ea"><span style="font-family: Verdana,sans-serif; font-size: xx-small; ">
 	  <select name="BANNER_DIR" size="3">
 	   <option value='pixels/' <?php if ( $BANNER_DIR == 'pixels/' ) {
-		   echo ' selected ';
+		   echo 'выбран';
 	   } ?>>pixels/ (recommended)</option>
 	  <option value='banners/' <?php if ( $BANNER_DIR == 'banners/' ) {
-		  echo ' selected ';
+		  echo 'выбран';
 	  } ?> >banners/ </option>
 	  <option value='mdsimages/' <?php if ( $BANNER_DIR == 'mdsimages/' ) {
-		  echo ' selected ';
+		  echo 'выбран';
 	  } ?>>mdsimages/</option>
 	  </select><br>
 	 
@@ -345,7 +345,7 @@ NOTES<br>
     <table border="0" cellpadding="5" cellspacing="2" style="border-style:groove" width="100%" bgcolor="#FFFFFF">
         <tr>
             <td colspan="2" bgcolor="#e6f2ea">
-      <span style="font-family: Verdana,sans-serif; font-size: xx-small; "><b>Email Settings</b>
+      <span style="font-family: Verdana,sans-serif; font-size: xx-small; "><b>Почта Settings</b>
 	 
 	  
 	</span></td>
@@ -509,7 +509,7 @@ NOTES<br>
       <input type="text" name="EMAIL_POP_SERVER" size="33" value="<?php echo EMAIL_POP_SERVER; ?>"><br>Eg. mail.example.com, usually the same as the SMTP server.</span></td>
         </tr>
         <tr>
-            <td bgcolor="#e6f2ea"><span style="font-family: Verdana,sans-serif; font-size: xx-small; ">SMTP/POP3 Username</span></td>
+            <td bgcolor="#e6f2ea"><span style="font-family: Verdana,sans-serif; font-size: xx-small; ">SMTP/POP3 имя пользователя</span></td>
             <td bgcolor="#e6f2ea"><span style="font-family: Verdana,sans-serif; font-size: xx-small; ">
       <input type="text" name="EMAIL_SMTP_USER" size="33" value="<?php echo EMAIL_SMTP_USER; ?>"></span></td>
         </tr>

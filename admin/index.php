@@ -89,7 +89,7 @@ require_once 'admin_common.php';
         - <a href="list.php">Лучшие рекламодатели</a><br/>
         - <a href="email_queue.php">Исходящие Email</a><br/>
         <!--
-		- <a href="expr.php">Expiration Reminders</a><br/>
+		- <a href="expr.php">Напоминания об истечении срока действия</a><br/>
 		-->
         <span>Клики:</span><br>
         - <a href="top.php">Топ кликов</a><br/>
