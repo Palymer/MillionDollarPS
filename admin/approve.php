@@ -34,7 +34,7 @@ require_once __DIR__ . "/../include/init.php";
 
 require( 'admin_common.php' );
 
-// edit this file to change the style of the mouseover box!
+// отредактируйте этот файл, чтобы изменить стиль поля наведения мыши!
 require( BASE_PATH . '/html/mouseover_box.htm' );
 
 echo '<script>';
@@ -54,7 +54,7 @@ if ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] == 'approve' ) {
 	mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) . $sql );
 	$sql = "UPDATE orders set approved='Y', published='N' WHERE order_id=" . intval( $_REQUEST['order_id'] ) . " {$bid_sql}";
 	mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) . $sql );
-	echo "Order Approved.<br>";
+	echo "Заказ подтвержден.<br>";
 }
 
 if ( isset( $_REQUEST['mass_approve'] ) && $_REQUEST['mass_approve'] != '' ) {
@@ -67,7 +67,7 @@ if ( isset( $_REQUEST['mass_approve'] ) && $_REQUEST['mass_approve'] != '' ) {
 			mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) . $sql );
 		}
 
-		echo "Orders Approved.<br>";
+		echo "Заказ подтвержден.<br>";
 	}
 }
 
@@ -77,7 +77,7 @@ if ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] == 'disapprove' ) {
 	mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) . $sql );
 	$sql = "UPDATE orders set approved='N' WHERE order_id='" . intval( $_REQUEST['order_id'] ) . "' {$bid_sql}";
 	mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) . $sql );
-	echo "Order Disapproved.<br>";
+	echo "Заказ подтвержден.<br>";
 }
 
 if ( isset( $_REQUEST['mass_disapprove'] ) && $_REQUEST['mass_disapprove'] != '' ) {
@@ -90,7 +90,7 @@ if ( isset( $_REQUEST['mass_disapprove'] ) && $_REQUEST['mass_disapprove'] != ''
 			mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) . $sql );
 		}
 
-		echo "Orders Disapproved.<br>";
+		echo "Заказ подтвержден.<br>";
 	}
 }
 
@@ -108,13 +108,13 @@ if ( isset( $_REQUEST['do_it_now'] ) && $_REQUEST['do_it_now'] == 'true' ) {
 
 ?>
 
-<h3>Remember to process your Grid Image(s) <a href="process.php">here</a></h3>
+<h3>Не забудьте обработать сетку изображений <a href="process.php">тут</a></h3>
 
 <form name="bidselect" method="post" action="approve.php">
     <input type="hidden" name="old_order_id" value="<?php //echo $order_id; ?>">
     <input type="hidden" value="<?php echo $_REQUEST['app']; ?>" name="app">
     <label>
-        Select Grid:
+        Выберите сетку:
         <select name="BID" onchange="mds_submit(this)">
             <option value='all'
 				<?php if ( $BID == 'all' ) {
@@ -134,9 +134,7 @@ if ( isset( $_REQUEST['do_it_now'] ) && $_REQUEST['do_it_now'] == 'true' ) {
 					$sel = '';
 				}
 
-				echo '
-                    <option
-                    ' . $sel . ' value=' . $row['banner_id'] . '>' . $row['name'] . '</option>';
+				echo '<option' . $sel . ' value=' . $row['banner_id'] . '>' . $row['name'] . '</option>';
 			}
 			?>
         </select>
@@ -161,7 +159,7 @@ if ( $_REQUEST['save_links'] != '' ) {
 if ( $_REQUEST['edit_links'] != '' ) {
 
 	?>
-    <h3>Edit Links:</h3>
+    <h3>Редактировать ссылки:</h3>
     <form method="post" action="approve.php">
         <input type="hidden" name="offset" value="<?php echo $_REQUEST['offset']; ?>">
         <input type="hidden" name="BID" value="<?php echo $BID; ?>">
@@ -169,8 +167,8 @@ if ( $_REQUEST['edit_links'] != '' ) {
         <input type="hidden" value="<?php echo $_REQUEST['app']; ?>" name="app">
         <table>
             <tr>
-                <td><b>URL</b></td>
-                <td><b>Alt Text</b></td>
+                <td><b>Адрес</b></td>
+                <td><b>Альтернативный текст</b></td>
             </tr>
 
 			<?php
@@ -270,16 +268,16 @@ if ( $count > $records_per_page ) {
         <tr>
         <tr>
             <td><input type="checkbox" onClick="checkBoxes('orders');"></td>
-            <td><b>Order ID</b></td>
-            <td><b>Order Date</b></td>
-            <td><b>Customer Name</b></td>
-            <td><b>Username & ID</b></td>
-            <td><b>Email</b></td>
+            <td><b>ИД заказа</b></td>
+            <td><b>Дата заказа</b></td>
+            <td><b>Имя покупателя</b></td>
+            <td><b>Имя пользователя и ИД</b></td>
+            <td><b>Почта</b></td>
             <td><b>X,Y</b></td>
-            <td><b>Grid</b></td>
-            <td><b>Image</b></td>
-            <td><b>Link Text(s) & Link URL(s)</b></td>
-            <td><b>Action</b></td>
+            <td><b>Сетка</b></td>
+            <td><b>Изображение</b></td>
+            <td><b>Текст ссылки</b></td>
+            <td><b>Действие</b></td>
         </tr>
 		<?php
 

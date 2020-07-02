@@ -258,9 +258,9 @@ if ( $_REQUEST['action'] == 'save' ) {
 
 <div class="outer_box">
     <p>
-        Here you can mark blocks to be not for sale. You can drag to select an area. Click 'Save' when done.
+        Здесь вы можете пометить блоки как Не для продажи. Вы можете перетащить, чтобы выбрать область. Нажмите «Сохранить», когда закончите.
     </p>
-    (Note: If you have a background image, the image is blended in using the browser's built-in filter - your alpha channel is ignored on this page)
+    (Примечание: если у вас есть фоновое изображение, изображение смешивается с помощью встроенного в браузер фильтра - ваш альфа-канал игнорируется на этой странице)
     <hr>
 	<?php
 	$sql = "Select * from banners ";
@@ -268,7 +268,7 @@ if ( $_REQUEST['action'] == 'save' ) {
 	?>
     <form name="bidselect" method="post" action="nfs.php">
         <label>
-            Select grid:
+            Выберите сетку:
             <select name="BID" onchange="mds_submit(this)">
                 <option></option>
 				<?php
@@ -295,7 +295,7 @@ if ( $_REQUEST['action'] == 'save' ) {
 		if ( $row['Field'] == 'status' ) {
 			if ( strpos( $row['Type'], 'nfs' ) == 0 ) {
 				$sql = "ALTER TABLE `blocks` CHANGE `status` `status` SET( 'reserved', 'sold', 'free', 'ordered', 'nfs' ) NOT NULL ";
-				mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>CANNOT UPGRADE YOUR DATABASE!<br>Please run the follwoing query manually from PhpMyAdmin:</b><br>$sql<br>" );
+				mysqli_query( $GLOBALS['connection'], $sql ) or die ( "<p><b>НЕ ВОЗМОЖНО ОБНОВИТЬ ВАШУ БАЗУ ДАННЫХ!<br>Пожалуйста, запустите следующий запрос вручную из PhpMyAdmin:</b><br>$sql<br>" );
 			}
 		}
 	}
@@ -306,8 +306,8 @@ if ( $_REQUEST['action'] == 'save' ) {
 	}
 	?>
     <div class="container">
-        <input class="save" type="submit" value='Save Not for Sale'/>
-        <input class="reset" type="submit" value='Reset'/>
+        <input class="save" type="submit" value='сохранить не для продажи'/>
+        <input class="reset" type="submit" value='Сбросить'/>
         <div class="grid">
 			<?php
 			$cell = "0";
@@ -341,7 +341,7 @@ if ( $_REQUEST['action'] == 'save' ) {
 			}
 			?>
         </div>
-        <input class="save" type="submit" value='Save Not for Sale'/>
+        <input class="save" type="submit" value='Сохранить не для продажи'/>
     </div>
 </div>
 <?php } ?>

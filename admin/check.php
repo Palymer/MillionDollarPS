@@ -51,4 +51,4 @@ while ( $row = mysqli_fetch_array( $result ) ) {
 	}
 }
 
-echo "Check Completed.";
+echo "Проверка завершена.";

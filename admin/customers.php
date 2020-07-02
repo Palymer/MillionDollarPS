@@ -51,7 +51,7 @@ function delete_advertiser( $user_id ) {
 	$result = mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) . $sql );
 	//$row = mysqli_fetch_array($result);
 	if ( mysqli_num_rows( $result ) > 0 ) {
-		echo "<span style=\"color: red; \">Error: Cannot delete because this user has some orders. (<a href='customers.php?delete_anyway=1&user_id=" . $user_id . "'>Click here to delete anyway</a>)<br></span>";
+		echo "<span style=\"color: red; \">Ошибка: невозможно удалить, потому что у этого пользователя есть несколько заказов. (<a href='customers.php?delete_anyway=1&user_id=" . $user_id . "'>Нажмите здесь, чтобы удалить в любом случае</a>)<br></span>";
 	} else {
 		$sql = "DELETE FROM users where ID=" . intval( $user_id );
 		mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) . $sql );
@@ -83,7 +83,7 @@ if ( $_REQUEST['delete_anyway'] != '' ) {
 		mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) . $sql );
 	}
 
-	echo "<p>User deleted. Please remember to process the image if the user had some pixels. </p>";
+	echo "<p>Пользователь удален. Пожалуйста, не забудьте обработать изображение, если у пользователя было несколько пикселей. </p>";
 }
 
 if ( $_REQUEST['mass_del'] != '' ) {
@@ -123,18 +123,18 @@ $q_string   = mysqli_real_escape_string( $GLOBALS['connection'], "&q_name=$q_nam
 
                     <tr>
                         <td width="63" bgcolor="#EDF8FC" valign="top">
-    <p align="right"><span style="font-size: x-small; font-family: Arial,serif; "><b>Name</b></span></p></td>
+    <p align="right"><span style="font-size: x-small; font-family: Arial,serif; "><b>Имя</b></span></p></td>
     <td width="286" bgcolor="#EDF8FC" valign="top">
       <span style="font-family: Arial; ">
       <input type="text" name="q_name" size="39" value="<?php echo $q_name; ?>"/></span></td>
     <td width="71" bgcolor="#EDF8FC" valign="top">
-        <p align="right"><b><span style="font-family: Arial; font-size: x-small; ">Username</span></b></p></td>
+        <p align="right"><b><span style="font-family: Arial; font-size: x-small; ">имя пользователя</span></b></p></td>
     <td width="299" bgcolor="#EDF8FC" valign="top">
         <input type="text" name="q_username" size="28" value="<?php echo $q_username; ?>"/></td>
     </tr>
     <tr>
         <td width="63" bgcolor="#EDF8FC" valign="top">
-            <p align="right"><b><span style="font-family: Arial; font-size: x-small; ">Signed Up After:</span></b></td>
+            <p align="right"><b><span style="font-family: Arial; font-size: x-small; ">Зарегистрироваться после:</span></b></td>
         <td width="286" bgcolor="#EDF8FC" valign="top">
             <b>
                 <span style="font-family: Arial; font-size: x-small; "></span></b><span style="font-size: x-small; font-family: Arial; "><b>
@@ -153,186 +153,186 @@ $q_string   = mysqli_real_escape_string( $GLOBALS['connection'], "&q_name=$q_nam
             <select name="q_aday">
                 <option></option>
                 <option <?php if ( $q_aday == '01' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >1
                 </option>
                 <option <?php if ( $q_aday == '02' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >2
                 </option>
                 <option <?php if ( $q_aday == '03' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >3
                 </option>
                 <option <?php if ( $q_aday == '04' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >4
                 </option>
                 <option <?php if ( $q_aday == '05' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >5
                 </option>
                 <option <?php if ( $q_aday == '06' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >6
                 </option>
                 <option <?php if ( $q_aday == '07' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?>>7
                 </option>
                 <option <?php if ( $q_aday == '08' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?>>8
                 </option>
                 <option <?php if ( $q_aday == '09' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >9
                 </option>
                 <option <?php if ( $q_aday == '25' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >25
                 </option>
                 <option <?php if ( $q_aday == '26' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >26
                 </option>
                 <option <?php if ( $q_aday == '10' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >10
                 </option>
                 <option <?php if ( $q_aday == '11' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> > 11
                 </option>
                 <option <?php if ( $q_aday == '12' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >12
                 </option>
                 <option <?php if ( $q_aday == '13' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >13
                 </option>
                 <option <?php if ( $q_aday == '14' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >14
                 </option>
                 <option <?php if ( $q_aday == '15' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >15
                 </option>
                 <option <?php if ( $q_aday == '16' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >16
                 </option>
                 <option <?php if ( $q_aday == '17' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >17
                 </option>
                 <option <?php if ( $q_aday == '18' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >18
                 </option>
                 <option <?php if ( $q_aday == '19' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >19
                 </option>
                 <option <?php if ( $q_aday == '20' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >20
                 </option>
                 <option <?php if ( $q_aday == '21' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >21
                 </option>
                 <option <?php if ( $q_aday == '22' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >22
                 </option>
                 <option <?php if ( $q_aday == '23' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >23
                 </option>
                 <option <?php if ( $q_aday == '24' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >24
                 </option>
                 <option <?php if ( $q_aday == '27' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >27
                 </option>
                 <option <?php if ( $q_aday == '28' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >28
                 </option>
                 <option <?php if ( $q_aday == '29' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >29
                 </option>
                 <option <?php if ( $q_aday == '30' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >30
                 </option>
                 <option <?php if ( $q_aday == '31' ) {
-					echo ' selected ';
+					echo 'выбран';
 				} ?> >31
                 </option>
             </select>
             <select name="q_amon">
                 <option></option>
                 <option <?php if ( $q_amon == '01' ) {
-					echo ' selected ';
-				} ?> value="1">Jan
+					echo 'выбран';
+				} ?> value="1">Январь
                 </option>
                 <option <?php if ( $q_amon == '02' ) {
-					echo ' selected ';
-				} ?> value="2">Feb
+					echo 'выбран';
+				} ?> value="2">Февраль
                 </option>
                 <option <?php if ( $q_amon == '03' ) {
-					echo ' selected ';
-				} ?> value="3">Mar
+					echo 'выбран';
+				} ?> value="3">Март
                 </option>
                 <option <?php if ( $q_amon == '04' ) {
-					echo ' selected ';
-				} ?> value="4">Apr
+					echo 'выбран';
+				} ?> value="4">Апрель
                 </option>
                 <option <?php if ( $q_amon == '05' ) {
-					echo ' selected ';
-				} ?> value="5">May
+					echo 'выбран';
+				} ?> value="5">Май
                 </option>
                 <option <?php if ( $q_amon == '06' ) {
-					echo ' selected ';
-				} ?> value="6">Jun
+					echo 'выбран';
+				} ?> value="6">Июнь
                 </option>
                 <option <?php if ( $q_amon == '07' ) {
-					echo ' selected ';
-				} ?> value="7">Jul
+					echo 'выбран';
+				} ?> value="7">Июль
                 </option>
                 <option <?php if ( $q_amon == '08' ) {
-					echo ' selected ';
-				} ?> value="8">Aug
+					echo 'выбран';
+				} ?> value="8">Август
                 </option>
                 <option <?php if ( $q_amon == '09' ) {
-					echo ' selected ';
-				} ?> value="9">Sep
+					echo 'выбран';
+				} ?> value="9">Сентябрь
                 </option>
                 <option <?php if ( $q_amon == '10' ) {
-					echo ' selected ';
-				} ?> value="10">Oct
+					echo 'выбран';
+				} ?> value="10">Октябрь
                 </option>
                 <option <?php if ( $q_amon == '11' ) {
-					echo ' selected ';
-				} ?> value="11">Nov
+					echo 'выбран';
+				} ?> value="11">Ноябрь
                 </option>
                 <option <?php if ( $q_amon == '12' ) {
-					echo ' selected ';
-				} ?> value="12">Dec
+					echo 'выбран';
+				} ?> value="12">Декабрь
                 </option>
             </select>
             <input type="text" name="q_ayear" size="4" value="<?php echo $q_ayear; ?>"/>
 
         </td>
         <td width="71" bgcolor="#EDF8FC" valign="top">
-            <p align="right"><b><span style="font-family: Arial; font-size: x-small; ">Email</span></b></td>
+            <p align="right"><b><span style="font-family: Arial; font-size: x-small; ">Почта</span></b></td>
         <td width="299" bgcolor="#EDF8FC" valign="top">
 
             <input type="text" name="q_email" size="28" value="<?php echo $q_email; ?>"/></td>
@@ -341,7 +341,7 @@ $q_string   = mysqli_real_escape_string( $GLOBALS['connection'], "&q_name=$q_nam
     <tr>
         <td width="731" bgcolor="#EDF8FC" colspan="4">
       <span style="font-family: Arial; "><b>
-      <input type="submit" value="Find" name="B1" style="float: left"><?php if ( $_REQUEST['search'] == 'search' ) { ?>&nbsp; </b></span><b>[<span style="font-family: Arial; "><a href="<?php echo $_SERVER['PHP_SELF'] ?>">Start a New Search</a></span>]</b><?php } ?></td>
+      <input type="submit" value="Find" name="B1" style="float: left"><?php if ( $_REQUEST['search'] == 'search' ) { ?>&nbsp; </b></span><b>[<span style="font-family: Arial; "><a href="<?php echo $_SERVER['PHP_SELF'] ?>">Новый поиск</a></span>]</b><?php } ?></td>
     </tr>
     </table>
 
@@ -349,7 +349,7 @@ $q_string   = mysqli_real_escape_string( $GLOBALS['connection'], "&q_name=$q_nam
 
     </form>
     </p>
-    <p>Listing advertisers. Click on a username to edit details / change password / change status<p>
+    <p>Листинг рекламодателей. Нажмите на имя пользователя, чтобы изменить детали / изменить пароль / изменить статус.<p>
 
 	<?php
 	$q_aday     = intval( $_REQUEST['q_aday'] );
@@ -419,7 +419,7 @@ $q_string   = mysqli_real_escape_string( $GLOBALS['connection'], "&q_name=$q_nam
     <form style="margin: 0px;" method="post" action="<?php echo $_SERVER['PHP_SELF'];
 	echo "?offset=" . $_REQUEST['offset'] . $q_string; ?>" name="form1">
         <input type="hidden" name="offset" value="<?php echo $_REQUEST['offset']; ?>">
-        <center><b><?php echo mysqli_num_rows( $result ); ?> Advertiser's Accounts Returned (<?php echo $pages; ?> pages) </b></center>
+        <center><b><?php echo mysqli_num_rows( $result ); ?> Аккаунты рекламодателя возвращены (<?php echo $pages; ?> pages) </b></center>
 		<?php
 		if ( $count > $records_per_page ) {
 			// calculate number of pages & current page
@@ -437,21 +437,21 @@ $q_string   = mysqli_real_escape_string( $GLOBALS['connection'], "&q_name=$q_nam
 
         <table width="100%" cellSpacing="1" cellPadding="3" align="center" bgColor="#d9d9d9" border="0">
             <tr>
-                <td colspan="12">With selected: <input type="submit" value='Delete' name='mass_del'> | <input type="submit" value='Validate' name='mass_val'></td>
+                <td colspan="12">С выбранными: <input type="submit" value='Delete' name='mass_del'> | <input type="submit" value='Validate' name='mass_val'></td>
             </tr>
             <tr>
                 <td><b><span style="font-family: Arial; font-size: x-small; "><input type="checkbox" onClick="checkBoxes('users');"></td>
-                <td><b><span style="font-family: Arial; font-size: x-small; ">Name</span></b></td>
-                <td><b><span style="font-family: Arial; font-size: x-small; ">Username</span></b></td>
-                <td><b><span style="font-family: Arial; font-size: x-small; ">Email</span></b></td>
-                <td><b><span style="font-family: Arial; font-size: x-small; ">Company</span></b></td>
-                <td><b><span style="font-family: Arial; font-size: x-small; ">Signup Date</span></b></td>
-                <td><b><span style="font-family: Arial; font-size: x-small; ">Validated?</span></b></td>
-                <td><b><span style="font-family: Arial; font-size: x-small; ">I.P</span></b></td>
-                <td><b><span style="font-family: Arial; font-size: x-small; ">Orders</span></b></td>
-                <td><b><span style="font-family: Arial; font-size: x-small; ">Pixels</span></b></td>
-                <td><b><span style="font-family: Arial; font-size: x-small; ">Clicks</span></b></td>
-                <td><b><span style="font-family: Arial; font-size: x-small; ">Action</span></b></td>
+                <td><b><span style="font-family: Arial; font-size: x-small; ">Имя</span></b></td>
+                <td><b><span style="font-family: Arial; font-size: x-small; ">Имя пользователя</span></b></td>
+                <td><b><span style="font-family: Arial; font-size: x-small; ">Электронная почта</span></b></td>
+                <td><b><span style="font-family: Arial; font-size: x-small; ">Компания</span></b></td>
+                <td><b><span style="font-family: Arial; font-size: x-small; ">Дата регистрации</span></b></td>
+                <td><b><span style="font-family: Arial; font-size: x-small; ">Подтверждено?</span></b></td>
+                <td><b><span style="font-family: Arial; font-size: x-small; ">IP адрес</span></b></td>
+                <td><b><span style="font-family: Arial; font-size: x-small; ">Заказы</span></b></td>
+                <td><b><span style="font-family: Arial; font-size: x-small; ">Пиксели</span></b></td>
+                <td><b><span style="font-family: Arial; font-size: x-small; ">Клики</span></b></td>
+                <td><b><span style="font-family: Arial; font-size: x-small; ">Действие</span></b></td>
             </tr>
 			<?php
 

@@ -35,15 +35,15 @@ require( 'admin_common.php' );
 
 ?>
 <p>
-    Grid HTML - This is the HTML code that you copy and paste to your HTML documents to display the grid<br>
-    Stats HTML - Copy and paste into your html file to display the stats<br>
+    Сетка HTML - это код HTML, который вы копируете и вставляете в свои документы HTML для отображения сетки<br>
+    Статистика HTML - Скопируйте и вставьте в свой HTML-файл для отображения статистики<br>
 </p>
 <table width="100%" border="0" cellSpacing="1" cellPadding="3" bgColor="#d9d9d9">
     <tr bgColor="#eaeaea">
-        <td><b><font size="2">Grid ID</b></font></td>
-        <td><b><font size="2">Name</b></font></td>
-        <td><b><font size="2">Grid HTML</b></font></td>
-        <td><b><font size="2">Stats HTML</b></font></td>
+        <td><b><font size="2">ИД сетки</b></font></td>
+        <td><b><font size="2">Имя</b></font></td>
+        <td><b><font size="2">HTML сетки</b></font></td>
+        <td><b><font size="2">Статистика HTML</b></font></td>
 
     </tr>
 	<?php

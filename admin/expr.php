@@ -51,14 +51,14 @@ if ( EMAIL_USER_EXPIRE_WARNING == 'YES' ) {
     <table width="100%" cellSpacing="1" cellPadding="3" align="center" bgColor="#d9d9d9" border="0">
         <tr>
             <td><b><input type="checkbox" onClick="checkBoxes('orders');"></td>
-            <td><b>Order Date</b></td>
-            <td><b>Customer Name</b></td>
-            <td><b>Username & ID</b></td>
-            <td><b>OrderID</b></td>
-            <td><b>Grid</b></td>
-            <td><b>Quantity</b></td>
-            <td><b>Amount</b></td>
-            <td><b>Status</b></td>
+            <td><b>Дата заказа</b></td>
+            <td><b>Имя покупателя</b></td>
+            <td><b>Имя пользователя и ИД</b></td>
+            <td><b>ИД заказа</b></td>
+            <td><b>Сетка</b></td>
+            <td><b>Количество</b></td>
+            <td><b>Сумма</b></td>
+            <td><b>Статус</b></td>
         </tr>
 
 		<?php
@@ -89,5 +89,5 @@ if ( EMAIL_USER_EXPIRE_WARNING == 'YES' ) {
     </table>
 	<?php
 } else {
-	echo "Expiration warnings not enabled. You can enable them form Main Config.";
+	echo "Предупреждения об истечении срока действия не включены. Вы можете включить их из Конфигурации.";
 }

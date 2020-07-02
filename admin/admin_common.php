@@ -42,7 +42,7 @@ if ( ( isset( $_REQUEST['pass'] ) && $_REQUEST['pass'] != '' ) && ( defined( "MA
 if ( ! isset( $_SESSION['ADMIN'] ) || empty( $_SESSION['ADMIN'] ) ) {
 	if ( defined( "MAIN_PHP" ) && MAIN_PHP == '1' ) {
 		?>
-        Please input admin password:<br>
+        Введите пароль Администратора:<br>
         <form method='post' action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <input type="password" name='pass'>
             <input type="submit" value="OK">

@@ -34,16 +34,16 @@ require_once __DIR__ . "/../include/init.php";
 require( 'admin_common.php' );
 
 ?>
-<p>System info</p>
-You have PHP version: <?php echo phpversion(); ?><br><br>
+<p>Системная информация</p>
+Ваша версия PHP: <?php echo phpversion(); ?><br><br>
 <?php
 if ( function_exists( 'gd_info' ) ) {
 	echo 'GD Library version: <pre>' . print_r( gd_info(), true ) . '</pre>';
 	if ( ! function_exists( "imagecreatetruecolor" ) ) {
-		echo "imagecreatetruecolor() is not supported by your version GD. Using imagecreate() instead.";
+		echo "imagecreatetruecolor() не поддерживается вашей версией GD. Используйте imagecreate() .";
 	}
 } else {
-	echo "Not installed! MDS cannot function without the php-gd package.";
+	echo "Не установлен! MDS не может работать без пакета php-gd.";
 }
 ?><br>
 <br>

@@ -150,7 +150,7 @@ $email     = $row['Email'];
             <td><input type="text" size="30" name="email" value="<?php echo $email; ?>"></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="Save"></td>
+            <td colspan="2"><input type="submit" value="Сохранить"></td>
         </tr>
     </table>
     <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
@@ -168,7 +168,7 @@ $rank = $row['Rank'];
             <td colspan="2"><h3>Account Status</h3>
         </tr>
         <tr>
-            <td>Status:</td>
+            <td> Статус:</td>
             <td><input type="radio" name="rank" value="1" <?php if ( $rank != 2 ) {
 					echo " checked ";
 				} ?> > - Normal Customer<br>
@@ -177,7 +177,7 @@ $rank = $row['Rank'];
 				} ?>> - Privileged User (All pixels are free!)<br></td>
         </tr>
         <tr>
-            <td colspan="2"><input type="submit" value="Save"></td>
+            <td colspan="2"><input type="submit" value="Сохранить"></td>
         </tr>
     </table>
     <input type="hidden" name="user_id" value="<?php echo $_REQUEST['user_id']; ?>">

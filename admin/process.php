@@ -59,17 +59,17 @@ if ( $_REQUEST['process'] == '1' ) {
 		}
 	}
 
-	echo "<br>Finished.<hr>";
+	echo "<br>Завершено.<hr>";
 }
 
 // Process images
 
 if ( ! is_writable( SERVER_PATH_TO_ADMIN . "temp/" ) ) {
-	echo "<b>Warning:</b> The script does not have permission write to " . SERVER_PATH_TO_ADMIN . "admin/temp/ or the directory does not exist <br>";
+	echo "<b>Ошибка:</b> Скрипт не имеет разрешения на запись в " . SERVER_PATH_TO_ADMIN . "admin/temp/ или каталог не существует <br>";
 }
 $BANNER_PATH = BASE_PATH . "/" . get_banner_dir();
 if ( ! is_writable( $BANNER_PATH ) ) {
-	echo "<b>Warning:</b> The script does not have permission write to " . $BANNER_PATH . " or the directory does not exist<br>";
+	echo "<b>Ошибка:</b> Скрипт не имеет разрешения на запись в " . $BANNER_PATH . " или каталог не существует<br>";
 }
 
 $sql = "SELECT * FROM orders where approved='N' and status='completed' ";
@@ -78,17 +78,17 @@ $result = mysqli_fetch_array( $r );
 $c      = mysqli_num_rows( $r );
 
 if ( $c > 0 ) {
-	echo "<h3>Note: There are/is $c pixel ads waiting to be approved. <a href='approve.php'>Approve pixel ads here.</a></h3>";
+	echo "<h3>Примечание: There are/is $c пиксельные объявления, ожидающие утверждения. <a href='approve.php'>Одобрить пиксельную рекламу здесь.</a></h3>";
 }
 
 ?>
 <p>
-    Here you can process the images. This is where the script gets all the user's approved pixels, and merges it into a single image. It automatically publishes the final grid into the <?php echo $BANNER_PATH; ?> directory where the grid images are served from. Click the button below after approving pixels.
+    Здесь вы можете обрабатывать изображения. Здесь сценарий получает все разрешенные пользователем пиксели и объединяет их в одно изображение. Он автоматически публикует окончательную сетку в <?php echo $BANNER_PATH; ?> каталог, из которого подаются изображения сетки. Нажмите кнопку ниже после утверждения пикселей.
 </p>
 <form method='post' action='<?php echo BASE_HTTP_PATH; ?>admin/process.php'>
     <input value='1' name="process" type="hidden"/>
     <select name="banner_list[]" multiple size='3'>
-        <option value="all" selected>Process All</option>
+        <option value="all" selected>Обработать все</option>
 		<?php
 
 		$sql = "Select * from banners";
@@ -99,6 +99,6 @@ if ( $c > 0 ) {
 		}
 		?>
     </select><br/>
-    <input type="submit" name='submit' value="Process Grids(s)"/>
+    <input type="submit" name='submit' value="Обработать сетки"/>
 </form>
 

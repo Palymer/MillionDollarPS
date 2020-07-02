@@ -43,8 +43,8 @@ $banner_data = load_banner_constants( $BID );
 //$b_row = mysqli_fetch_array($result);
 
 ?>
-    The following screen shows a map of all the orders made on a grid. Move your mouse over the blocks to find who owns the order. Click on the block to manage the order.<br>
-    Red blocks are on order (Status can be: 'reserved', 'ordered', 'sold'), Green blocks are currently selected (Status can be: 'new')
+    На следующем экране показана карта всех заказов, сделанных в сетке. Наведите указатель мыши на блоки, чтобы найти, кому принадлежит заказ. Нажмите на блок, чтобы управлять заказом. <br>
+    Красные блоки находятся в заказе (статус может быть: «зарезервирован», «заказан», «продан»), зеленые блоки в настоящее время выбраны (статус может быть: «новый»)
     </span>
 <?php
 
@@ -54,7 +54,7 @@ $res = mysqli_query( $GLOBALS['connection'], $sql );
 
     <form name="bidselect" method="post" action="ordersmap.php">
 
-        Select grid: <select name="BID" onchange="mds_submit(this)">
+        Выберите сетку: <select name="BID" onchange="mds_submit(this)">
             <option></option>
 			<?php
 			while ( $row = mysqli_fetch_array( $res ) ) {

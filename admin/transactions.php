@@ -62,13 +62,13 @@ if ( $_REQUEST['action'] == 'refund' ) {
 			credit_transaction( $row['order_id'], $row['price'], $row['currency'], $row['txn_id'], 'Refund', 'Admin' );
 		} else {
 
-			echo "<b>Error: A refund was already found on this system for this order..</b><br>";
+			echo "<b>Ошибка: в этой системе уже найден возврат по этому заказу.</b><br>";
 		}
 	} else {
 
 		echo $row['status'];
 
-		echo "<b>Error: The system can only refund orders that are completed, please cancel the order first</b><br>";
+		echo "<b>Ошибка: система может возвращать только выполненные заказы, сначала отмените заказ</b><br>";
 	}
 	// can only refund completed orders..
 
@@ -76,7 +76,7 @@ if ( $_REQUEST['action'] == 'refund' ) {
 
 ?>
 <p>
-    The transaction log helps you manage the money transfers. Note: Refunds are processed with PayPal or the payment gateway that was used. If you issued a refund that does not automatically report refunds to the script, you can issue your refunds here.
+    Журнал транзакций помогает вам управлять денежными переводами. Примечание. Возвраты обрабатываются с помощью PayPal или использованного платежного шлюза. Если вы произвели возврат средств, который автоматически не сообщает о возврате в сценарий, вы можете оформить возврат здесь.
 </p>
 <?php
 
@@ -125,7 +125,7 @@ if ( $_REQUEST['to_year'] == '' ) {
 
 <h3>Transactions</h3>
 <form method="GET" action="transactions.php">
-    From y/m/d:
+    От г/м/д:
 
     <select name="from_year">
         <option value=''></option>
@@ -237,25 +237,25 @@ if ( $_REQUEST['to_year'] == '' ) {
 
     <tr bgcolor="#eaeaea">
         <td>
-            <font face="arial" size="2"><b>Date</b></font>
+            <font face="arial" size="2"><b>Дата</b></font>
         </td>
         <td>
-            <font face="arial" size="2"><b>Order ID</b></font>
+            <font face="arial" size="2"><b>ИД заказа</b></font>
         </td>
         <td>
-            <font face="arial" size="2"><b>Origin</b></font>
+            <font face="arial" size="2"><b>Источник</b></font>
         </td>
         <td>
-            <font face="arial" size="2"><b>Reason / Status</b></font>
+            <font face="arial" size="2"><b>Причина / Статус</b></font>
         </td>
         <td>
-            <font face="arial" size="2"><b>Amount</b></font>
+            <font face="arial" size="2"><b>Сумма</b></font>
         </td>
         <td>
-            <font face="arial" size="2"><b>Type</b></font>
+            <font face="arial" size="2"><b>Тип</b></font>
         </td>
         <td>
-            <font face="arial" size="2"><b>Action</b></font>
+            <font face="arial" size="2"><b>Действие</b></font>
         </td>
     </tr>
 

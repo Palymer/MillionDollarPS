@@ -39,7 +39,7 @@ require_once 'admin_common.php';
 <html lang="">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title>Million Dollar Script Administration</title>
+    <title>Админ панель</title>
     <link rel="stylesheet" type="text/css" href="<?php echo BASE_HTTP_PATH; ?>admin/css/admin.css?ver=<?php echo filemtime( BASE_PATH . "/admin/css/admin.css" ); ?>">
     <script src="<?php echo BASE_HTTP_PATH; ?>vendor/components/jquery/jquery.min.js?ver=<?php echo filemtime( BASE_PATH . "/vendor/components/jquery/jquery.min.js" ); ?>"></script>
     <script src="<?php echo BASE_HTTP_PATH; ?>vendor/components/jqueryui/jquery-ui.min.js?ver=<?php echo filemtime( BASE_PATH . "/vendor/components/jqueryui/jquery-ui.min.js" ); ?>"></script>
@@ -53,66 +53,66 @@ require_once 'admin_common.php';
     <div class="admin-menu">
         <img src="https://milliondollarscript.com/logo.gif" alt="Million Dollar Script logo" style="max-width:100%;"/>
         <br>
-        <a href="main.php">Main Summary</a><br/>
-        <a href="<?php echo BASE_HTTP_PATH; ?>" target="_blank">View Site</a><br/>
+        <a href="main.php">Основная информация</a><br/>
+        <a href="<?php echo BASE_HTTP_PATH; ?>" target="_blank">Просмотр сайта</a></a><br/>
         <hr>
-        <b>Pixel Inventory</b><br/>
-        + <a href="inventory.php">Manage Grids</a><br/>
-        &nbsp;&nbsp;|- <a href="packs.php">Packages</a><br/>
-        &nbsp;&nbsp;|- <a href="price.php">Price Zones</a><br/>
-        &nbsp;&nbsp;|- <a href="nfs.php">Not For Sale</a><br/>
-        &nbsp;&nbsp;|- <a href="blending.php">Backgrounds</a><br/>
-        - <a href="gethtml.php">Get HTML Code</a><br/>
+        <b>Инвентаризация</b><br/>
+        + <a href="inventory.php">Управление сетками</a><br/>
+        &nbsp;&nbsp;|- <a href="packs.php">Управление сетками</a><br/>
+        &nbsp;&nbsp;|- <a href="price.php">Ценовые зоны</a><br/>
+        &nbsp;&nbsp;|- <a href="nfs.php">Не для продажи</a><br/>
+        &nbsp;&nbsp;|- <a href="blending.php">Фон</a><br/>
+        - <a href="gethtml.php">Получить HTML код</a><br/>
 
         <hr>
-        <b>Advertiser Admin</b><br/>
-        - <a href="customers.php">List Advertisers</a><br/>
-        <span>Current orders:</span><br>
-        - <a href="orders.php?show=WA">Orders: Waiting</a><br/>
-        - <a href="orders.php?show=CO">Orders: Completed</a><br/>
-        <span>Non-current orders:</span><br>
-        - <a href="orders.php?show=EX">Orders: Expired</a><br/>
-        - <a href="orders.php?show=CA">Orders: Cancelled</a><br/>
-        - <a href="orders.php?show=DE">Orders: Deleted</a><br/>
+        <b>Рекламодатели</b><br/>
+        - <a href="customers.php">Список рекламодателей</a><br/>
+        <span>Текущие Заказы:</span><br>
+        - <a href="orders.php?show=WA">Заказы: Ожидание</a><br/>
+        - <a href="orders.php?show=CO">Заказы: Завершенные</a><br/>
+        <span>Старые Заказы:</span><br>
+        - <a href="orders.php?show=EX">Заказы: Прошедшие</a><br/>
+        - <a href="orders.php?show=CA">Заказы: Отмененые</a><br/>
+        - <a href="orders.php?show=DE">Заказы: Удаленные</a><br/>
         <span>Map:</span><br>
-        - <a href="ordersmap.php">Map of Orders</a><br/>
-        <span>Transactions:</span><br>
-        - <a href="transactions.php">Transaction Log</a><br/>
+        - <a href="ordersmap.php">Карта заказов</a><br/>
+        <span>Транзакции:</span><br>
+        - <a href="transactions.php">История транзакций</a><br/>
         <hr>
-        <b>Pixel Admin</b><br/>
-        - <a href="approve.php?app=N">Approve Pixels</a><br/>
-        - <a href="approve.php?app=Y">Disapprove Pixels</a><br/>
-        - <a href="process.php">Process Pixels</a><br/>
+        <b>Пиксели</b><br/>
+        - <a href="approve.php?app=N">Утвердить пиксели</a><br/>
+        - <a href="approve.php?app=Y">Отклонить пиксели</a><br/>
+        - <a href="process.php">Пиксели в процессе</a><br/>
         <hr>
-        <b>Report</b><br/>
-        - <a href="ads.php">Ad List</a><br/>
-        - <a href="list.php">Top Advertisers</a><br/>
-        - <a href="email_queue.php">Outgoing Email</a><br/>
+        <b>Отчеты</b><br/>
+        - <a href="ads.php">Список объявлений</a><br/>
+        - <a href="list.php">Лучшие рекламодатели</a><br/>
+        - <a href="email_queue.php">Исходящие Email</a><br/>
         <!--
-		- <a href="expr.php">Expiration Reminders</a><br/>
+		- <a href="expr.php">Напоминания об истечении срока действия</a><br/>
 		-->
-        <span>Clicks:</span><br>
-        - <a href="top.php">Top Clicks</a><br/>
-        - <a href="clicks.php">Click Reports</a><br/>
+        <span>Клики:</span><br>
+        - <a href="top.php">Топ кликов</a><br/>
+        - <a href="clicks.php">Отчеты по кликам</a><br/>
         <hr>
-        <b>Configuration</b><br/>
-        - <a href="edit_config.php">Main Config</a><br/>
-        - <a href="language.php">Language</a><br/>
-        - <a href="currency.php">Currencies</a><br/>
-        - <a href="payment.php">Payment Modules</a><br/>
-        - <a href="adform.php">Ad Form</a><br/>
+        <b>Настройки</b><br/>
+        - <a href="edit_config.php">Настройки</a><br/>
+        - <a href="language.php">Язык<br/>
+        - <a href="currency.php">Валюты</a><br/>
+        - <a href="payment.php">Модули оплаты</a><br/>
+        - <a href="adform.php">Форма объявления</a><br/>
         <hr>
-        <b>Logout</b><br/>
-        - <a href="logout.php">Logout</a><br/>
+        <b>Выход</b><br/>
+        - <a href="logout.php">Выход</a><br/>
         <hr>
-        <b>Info</b><br/>
-        - <a href="info.php">System Info</a><br/>
-        - <a href="https://milliondollarscript.com">Script Home</a><br/>
+        <b>Информация</b><br/>
+        - <a href="info.php">Системная информация</a><br/>
+        - <a href="https://chwh.ru">Разработчик</a><br/>
 
         <br/>
         <small>Copyright <?php date( 'Y' ); ?>, see <a href="../LICENSE.txt">LICENSE.txt</a> for license information.<br/>
             <br/>
-            MDS Build Date:<br/><?php echo VERSION_INFO; ?></small>
+            MDS дата билда:<br/><?php echo VERSION_INFO; ?></small>
     </div>
     <div class="admin-content"></div>
 </div>

@@ -35,7 +35,7 @@ require_once __DIR__ . "/../include/init.php";
 require( 'admin_common.php' );
 
 if ( ADVANCED_CLICK_COUNT != 'YES' ) {
-	die ( "Advanced click tracking not enabled. You will need to enable advanced click tracking in the Main Config" );
+	die ( "Advanced click tracking not enabled. You will need to enable advanced click tracking in the Конфигурации" );
 }
 
 $BID = $f2->bid();
@@ -46,7 +46,7 @@ $res = mysqli_query( $GLOBALS['connection'], $sql );
 
     <form name="bidselect" method="post" action="clicks.php">
 
-        Select grid: <select name="BID" onchange="mds_submit(this)">
+        Выберите сетку: <select name="BID" onchange="mds_submit(this)">
 			<?php
 			while ( $row = mysqli_fetch_array( $res ) ) {
 
@@ -206,7 +206,7 @@ if ( $_REQUEST['to_year'] == '' ) {
     <table border="1">
 
         <tr>
-            <td><b>Date</b></td>
+            <td><b>Дата</b></td>
             <td><b>Clicks</b></td>
         </tr>
 

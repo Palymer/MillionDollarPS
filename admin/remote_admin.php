@@ -74,7 +74,7 @@ if ( $_REQUEST['approve_links'] != '' ) {
 			$i ++;
 		}
 	}
-	// approve pixels
+	// Утвердить пиксели
 	$sql = "UPDATE blocks set approved='Y' WHERE user_id=" . intval( $_REQUEST['user_id'] ) . " AND banner_id=" . intval( $BID );
 	mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) . $sql );
 
@@ -87,7 +87,7 @@ if ( $_REQUEST['approve_links'] != '' ) {
 	publish_image( $BID );
 	process_map( $BID );
 
-	echo "<p><b>Links Approved, grid updated!</b></p>";
+	echo "<p><b>Ссылки одобрены, сетка обновлена!</b></p>";
 }
 
 if ( $_REQUEST['disapprove_links'] != '' ) {
@@ -102,7 +102,7 @@ if ( $_REQUEST['disapprove_links'] != '' ) {
 	publish_image( $BID );
 	process_map( $BID );
 
-	echo "<p><b>Links Disapproved, grid updated!</b></p>";
+	echo "<p><b>Ссылки отклонены, сетка обновлена!</b></p>";
 }
 
 ?>
@@ -113,8 +113,8 @@ if ( $_REQUEST['disapprove_links'] != '' ) {
         <input type="hidden" name="user_id" value="<?php echo $_REQUEST['user_id']; ?>">
         <table>
             <tr>
-                <td><b>URL</b></td>
-                <td><b>Alt Text</b></td>
+                <td><b>Адрес</b></td>
+                <td><b>Альтернативный текст</b></td>
             </tr>
 
 			<?php
@@ -138,7 +138,7 @@ if ( $_REQUEST['disapprove_links'] != '' ) {
         </table>
 
         <input type="submit" value="Approve (OK)" name="approve_links"> | <input type="submit" value="Disapprove (No)" name="disapprove_links">
-        &nbsp; &nbsp;<a href="index.php">Go to Admin</a> | <a href='../users/login.php?Username=<?php echo $u_row['Username']; ?>&Password=<?php echo ADMIN_PASSWORD; ?>' target='_blank'>Login to this Advertiser's Account</a>
+        &nbsp; &nbsp;<a href="index.php">Перейти к Admin</a> | <a href='../users/login.php?Username=<?php echo $u_row['Username']; ?>&Password=<?php echo ADMIN_PASSWORD; ?>' target='_blank'>Войти в аккаунт этого рекламодателя</a>
     </form>
 
 <?php

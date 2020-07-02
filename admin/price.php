@@ -36,7 +36,7 @@ $BID = $f2->bid();
 ?>
 
 <p>
-    <b>Price Zones:</b> Here you can add different price price zones to the grid. This feature allows you to make some regions of the grid more expensive than others. <i>Careful: Packages disregard Price Zones, i.e. if a grid has packages, the Price Zones will be ignored for that grid.</i></p>
+    <b>Ценовые зоны:</b> Здесь вы можете добавить различные ценовые зоны в сетку. Эта функция позволяет сделать некоторые регионы сетки более дорогими, чем другие. <i>Осторожно: пакеты игнорируют ценовые зоны, т.е. если в сетке есть пакеты, ценовые зоны будут игнорироваться для этой сетки.</i></p>
 <hr>
 <?php
 $sql = "Select * from banners ";
@@ -44,7 +44,7 @@ $res = mysqli_query( $GLOBALS['connection'], $sql );
 ?>
 <form name="bidselect" method="post" action="price.php">
     <label>
-        Select grid:
+        Выберите сетку:
         <select name="BID" onchange="mds_submit(this)">
             <option></option>
 			<?php
@@ -69,13 +69,13 @@ if ( $BID != '' ) {
 	$banner_data = load_banner_constants( $BID );
 	?>
     <hr>
-    <b>Grid ID:</b> <?php echo $BID; ?><br>
-    <b>Grid Name:</b> <?php echo $banner_data['G_NAME']; ?><br>
-    <b>Default Price per block:</b> <?php echo $banner_data['G_PRICE']; ?><br>
+    <b>ИД сетки:</b> <?php echo $BID; ?><br>
+    <b>Имя сетки:</b> <?php echo $banner_data['G_NAME']; ?><br>
+    <b>Цена по умолчанию за блок:</b> <?php echo $banner_data['G_PRICE']; ?><br>
 
     <input type="button" style="background-color:#66FF33" value="New Price Zone..." onclick="mds_load_page('price.php?new=1&BID=<?php echo $BID; ?>', true)"><br>
 
-    Listing rows that are marked as custom price.<br>
+    Вывод списка строк, помеченных как пользовательские цены.<br>
 	<?php
 	function validate_input() {
 
@@ -85,37 +85,37 @@ if ( $BID != '' ) {
 
 		$error = "";
 		if ( trim( $_REQUEST['row_from'] ) == '' ) {
-			$error .= "<b>- 'Start from Row' code is blank</b><br>";
+			$error .= "<b>- Код «Начать с строки» пуст</b><br>";
 		}
 		if ( trim( $_REQUEST['row_to'] ) == '' ) {
-			$error .= "<b>- 'End at Row' is blank</b><br>";
+			$error .= "<b>- «Конец в строке» пусто</b><br>";
 		}
 
 		if ( trim( $_REQUEST['col_from'] ) == '' ) {
-			$error .= "<b>- 'Start from Col' code is blank</b><br>";
+			$error .= "<b>- Код «Начать с Кол» пуст</b><br>";
 		}
 		if ( trim( $_REQUEST['col_to'] ) == '' ) {
-			$error .= "<b>- 'End at Col' is blank</b><br>";
+			$error .= "<b>- «Конец в седле» пусто</b><br>";
 		}
 
 		if ( trim( $_REQUEST['color'] ) == '' ) {
-			$error .= "<b>- 'Color' not selected</b><br>";
+			$error .= "<b>- «Цвет» не выбран</b><br>";
 		}
 
 		if ( $error == '' ) {
 			if ( ! is_numeric( $_REQUEST['row_from'] ) ) {
-				$error .= "<b>- 'Start from Row' must be a number</b><br>";
+				$error .= "<b>- «Старт с строки» должен быть числом</b><br>";
 			}
 
 			if ( ! is_numeric( $_REQUEST['row_to'] ) ) {
-				$error .= "<b>- 'End at Row' must be a number</b><br>";
+				$error .= "<b>- «Конец в строке» должен быть числом</b><br>";
 			}
 
 			if ( $error == '' ) {
 				if ( $_REQUEST['row_from'] > $_REQUEST['row_to'] ) {
-					$error .= "<b>- 'Start from Row' is larger than 'End at Row'</b><br>";
+					$error .= "<b>- «Начать с строки» больше, чем «Конец с строки»</b><br>";
 				} else if ( ( $_REQUEST['row_from'] < 1 ) || ( $_REQUEST['row_to'] > $banner_data['G_HEIGHT'] ) ) {
-					$error .= "<b>- The rows specified are out of range! (The current grid has " . $banner_data['G_HEIGHT'] . " rows)</b><br>";
+					$error .= "<b>- Указанные строки находятся вне диапазона! (Текущая сетка имеет " . $banner_data['G_HEIGHT'] . " строк)</b><br>";
 				} else {
 					// check database..
 					if ( $_REQUEST['submit'] != '' ) {
@@ -128,25 +128,25 @@ if ( $BID != '' ) {
 						$result = mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) );
 
 						if ( mysqli_num_rows( $result ) > 0 ) {
-							$error .= "<b> - Cannot create: Price zones cannot overlap other price zones!</b><br>";
+							$error .= "<b> - Невозможно создать: ценовые зоны не могут перекрывать другие ценовые зоны!</b><br>";
 						}
 					}
 				}
 
 				if ( $_REQUEST['col_from'] > $_REQUEST['col_to'] ) {
-					$error .= "<b>- 'Start from Column' is larger than 'End at Column'</b><br>";
+					$error .= "<b>- «Начало из столбца» больше, чем «Конец в столбце»</b><br>";
 				} else if ( ( $_REQUEST['col_from'] < 1 ) || ( $_REQUEST['col_to'] > $banner_data['G_WIDTH'] ) ) {
-					$error .= "<b>- The columns specified are out of range! (The current grid has " . $banner_data['G_WIDTH'] . " columns)</b><br>";
+					$error .= "<b>- Указанные столбцы находятся вне диапазона! (Текущая сетка имеет " . $banner_data['G_WIDTH'] . " колонок)</b><br>";
 				}
 			}
 		}
 
 		if ( trim( $_REQUEST['price'] ) == '' ) {
-			$error .= "<b>- Price is blank</b><br>";
+			$error .= "<b>- Цена не указана</b><br>";
 		}
 
 		if ( trim( $_REQUEST['currency'] ) == '' ) {
-			$error .= "<b>- Currency is blank</b><br>";
+			$error .= "<b>- Валюта пуста</b><br>";
 		}
 
 		return $error;
@@ -162,7 +162,7 @@ if ( $BID != '' ) {
 
 		if ( $error != '' ) {
 			echo "<p>";
-			echo "<font color='red'>Error: cannot save due to the following errors:</font><br>";
+			echo "<font color='red'>Ошибка: невозможно сохранить из-за следующих ошибок:</font><br>";
 			echo $error;
 			echo "</p>";
 		} else {
@@ -184,15 +184,15 @@ if ( $BID != '' ) {
 
         <table width="800" cellSpacing="1" cellPadding="3" bgColor="#d9d9d9" border="0">
             <tr>
-                <td><b><font face="Arial" size="2">Grid ID</font></b></td>
-                <td><b><font face="Arial" size="2">Color</font></b></td>
-                <td><b><font face="Arial" size="2">Row<br>- From</font></b></td>
-                <td><b><font face="Arial" size="2">Row<br>- To</font></b></td>
-                <td><b><font face="Arial" size="2">Column<br>- From</font></b></td>
-                <td><b><font face="Arial" size="2">Column<br>- To</font></b></td>
-                <td><b><font face="Arial" size="2">Price<br>per block</font></b></td>
-                <td><b><font face="Arial" size="2">Currency</font></b></td>
-                <td><b><font face="Arial" size="2">Action</font></b></td>
+                <td><b><font face="Arial" size="2">ИД сетки</font></b></td>
+                <td><b><font face="Arial" size="2">Цвет</font></b></td>
+                <td><b><font face="Arial" size="2">Строка<br>- от</font></b></td>
+                <td><b><font face="Arial" size="2">Строка<br>- к</font></b></td>
+                <td><b><font face="Arial" size="2">Колонка<br>- от</font></b></td>
+                <td><b><font face="Arial" size="2">Колонка<br>- к</font></b></td>
+                <td><b><font face="Arial" size="2">Цена<br>за блок</font></b></td>
+                <td><b><font face="Arial" size="2">Валюта</font></b></td>
+                <td><b><font face="Arial" size="2">Действие</font></b></td>
             </tr>
 
 			<?php
@@ -219,7 +219,7 @@ if ( $BID != '' ) {
                     <td><font face="Arial" size="2"><?php echo $row['col_to']; ?></font></td>
                     <td><font face="Arial" size="2"><?php echo $row['price']; ?></font></td>
                     <td><font face="Arial" size="2"><?php echo $row['currency']; ?></font></td>
-                    <td nowrap><font face="Arial" size="2"><a href="price.php?price_id=<?php echo $row['price_id']; ?>&BID=<?php echo $BID; ?>&action=edit">Edit</a> | <a href="price.php?price_id=<?php echo $row['price_id']; ?>&BID=<?php echo $BID; ?>&action=delete" onclick="return confirmLink(this, 'Delete, are you sure?');">Delete</a></font></td>
+                    <td nowrap><font face="Arial" size="2"><a href="price.php?price_id=<?php echo $row['price_id']; ?>&BID=<?php echo $BID; ?>&action=edit">Редактировать</a> | <a href="price.php?price_id=<?php echo $row['price_id']; ?>&BID=<?php echo $BID; ?>&action=delete" onclick="return confirmLink(this, 'Delete, are you sure?');">Удалить</a></font></td>
                 </tr>
 				<?php
 			}
@@ -227,15 +227,15 @@ if ( $BID != '' ) {
         </table>
 		<?php
 	} else {
-		echo "There are no custom price zones for this grid.<br>";
+		echo "Для этой сетки нет пользовательских ценовых зон.<br>";
 	}
 
 	if ( $_REQUEST['new'] == '1' ) {
-		echo "<h4>Add Price Zone:</h4>";
+		echo "<h4>Добавить ценовую зону:</h4>";
 	}
 
 	if ( $_REQUEST['action'] == 'edit' ) {
-		echo "<h4>Edit Price Zone:</h4>";
+		echo "<h4>Изменить ценовую зону:</h4>";
 
 		$sql = "SELECT * FROM prices WHERE `price_id`='" . intval( $_REQUEST['price_id'] ) . "' ";
 		$result = mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) );
@@ -269,57 +269,57 @@ if ( $BID != '' ) {
             <input type="hidden" value="<?php echo $BID; ?>" name="BID">
             <table border="0" cellSpacing="1" cellPadding="3" bgColor="#d9d9d9">
                 <tr bgcolor="#ffffff">
-                    <td><font size="2">Color :</font></td>
+                    <td><font size="2">Цвет:</font></td>
                     <td>
                         <select name="color">
-                            <option value="">[Select]</option>
+                            <option value="">[Выбрать]</option>
                             <option value="yellow" <?php if ( $_REQUEST['color'] == 'yellow' ) {
-								echo ' selected ';
-							} ?> style="background-color: #FFFF00">Yellow
+								echo 'выбран';
+							} ?> style="background-color: #FFFF00">Желтый
                             </option>
                             <option value="cyan" <?php if ( $_REQUEST['color'] == 'cyan' ) {
-								echo ' selected ';
-							} ?> style="background-color: #00FFFF">Cyan
+								echo 'выбран';
+							} ?> style="background-color: #00FFFF">Голубой
                             </option>
                             <option value="magenta" <?php if ( $_REQUEST['color'] == 'magenta' ) {
-								echo ' selected ';
-							} ?> style="background-color: #FF00FF">Magenta
+								echo 'выбран';
+							} ?> style="background-color: #FF00FF">Розовый
                             </option>
                             <option value="white" <?php if ( $_REQUEST['color'] == 'white' ) {
-								echo ' selected ';
-							} ?> style="background-color: #FFffFF">White
+								echo 'выбран';
+							} ?> style="background-color: #FFffFF">Белый
                             </option>
                         </select>
 
                     </td>
                 </tr>
                 <tr bgcolor="#ffffff">
-                    <td><font size="2">Start from Row :</font></td>
+                    <td><font size="2">Начало с строки:</font></td>
                     <td><input size="2" type="text" name="row_from" value="<?php echo intval( $_REQUEST['row_from'] ); ?>"> eg. 1</td>
                 </tr>
                 <tr bgcolor="#ffffff">
-                    <td><font size="2">End at Row:</font></td>
+                    <td><font size="2">Конец строки:</font></td>
                     <td><input size="2" type="text" name="row_to" value="<?php echo intval( $_REQUEST['row_to'] ); ?>"> eg. 25</td>
                 </tr>
                 <tr bgcolor="#ffffff">
-                    <td><font size="2">Start from Column :</font></td>
+                    <td><font size="2">Начало с колонки:</font></td>
                     <td><input size="2" type="text" name="col_from" value="<?php echo intval( $_REQUEST['col_from'] ); ?>"> eg. 1</td>
                 </tr>
                 <tr bgcolor="#ffffff">
-                    <td><font size="2">End at Column:</font></td>
+                    <td><font size="2">Конец колонки:</font></td>
                     <td><input size="2" type="text" name="col_to" value="<?php echo intval( $_REQUEST['col_to'] ); ?>"> eg. 25</td>
                 </tr>
                 <tr bgcolor="#ffffff">
-                    <td><font size="2">Price Per Block:</font></td>
+                    <td><font size="2">Цена за блок:</font></td>
                     <td><input size="5" type="text" name="price" value="<?php echo floatval( $_REQUEST['price'] ); ?>">Price per block (<?php echo $banner_data['BLK_WIDTH'] * $banner_data['BLK_HEIGHT']; ?> pixels). Enter a decimal</td>
                 </tr>
                 <tr bgcolor="#ffffff">
-                    <td><font size="2">Currency:</font></td>
+                    <td><font size="2">Валюта:</font></td>
                     <td><select size="1" name="currency"><?php currency_option_list( $_REQUEST['currency'] ); ?>The price's currency</td>
                 </tr>
 
             </table>
-            <input type="submit" name="submit" value="Submit">
+            <input type="submit" name="submit" value="ОК">
         </form>
 		<?php
 	}

@@ -48,7 +48,7 @@ $res = mysqli_query( $GLOBALS['connection'], $sql );
 ?>
 <form name="bidselect" method="post" action="top.php">
     <input type="hidden" name="old_order_id" value="<?php echo $order_id; ?>">
-    Select grid: <select name="BID" onchange="mds_submit(this)">
+    Выберите сетку: <select name="BID" onchange="mds_submit(this)">
         <option value='all' <?php if ( $BID == 'all' ) {
 			echo 'selected';
 		} ?>>Show All
@@ -68,20 +68,20 @@ $res = mysqli_query( $GLOBALS['connection'], $sql );
 </form>
 <hr>
 <p>
-    Here is the list of the top clicks. You may copy and paste this list onto your website.
+    Вот список Топ кликов. Вы можете скопировать и вставить этот список на свой сайт.
 </p>
 
 <table width="100%" border="0" cellSpacing="1" cellPadding="3" align="center" bgColor="#d9d9d9">
 
     <tr>
         <td>
-            <font face="arial" size="2"><b>Advertiser's Link</b></font>
+            <font face="arial" size="2"><b>Ссылка рекламодателя</b></font>
         </td>
         <td>
-            <font face="arial" size="2"><b>Blocks</b></font>
+            <font face="arial" size="2"><b>Блоки</b></font>
         </td>
         <td>
-            <font face="arial" size="2"><b>Clicks</b></font>
+            <font face="arial" size="2"><b>Клики</b></font>
         </td>
     </tr>
 

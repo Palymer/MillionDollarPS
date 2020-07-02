@@ -37,8 +37,8 @@ $BID = $f2->bid();
 ?>
 
     <p>
-        Packages: Here you can add different price / expiry / max orders combinations to your grids called 'Packages'. Packages added to a grid will overwrite the grid's default price, expiry & max orders settings. After selecting pixels from a grid, the user will choose which package they want. Once the package is selected, the script will calculate the final price for the order.
-        <i>Careful: Packages disregard Price Zones, i.e. if a grid has packages, then the Price Zones will be ignored for that grid.</i></p>
+        Пакеты: Здесь вы можете добавить различные комбинации цена / срок действия / максимальное количество заказов в ваши сетки, называемые «Пакеты». Пакеты, добавленные в сетку, перезаписывают настройки по умолчанию для цены, срока действия и максимальных заказов сетки. После выбора пикселей в сетке пользователь будет выбирать, какой пакет он хочет. После того, как пакет выбран, скрипт рассчитает окончательную цену заказа.
+        <i> Осторожно: пакеты игнорируют ценовые зоны, т. е. если в сетке есть пакеты, то ценовые зоны будут игнорироваться для этой сетки. </i> </p>
     <hr>
 <?php
 $sql = "Select * from banners ";
@@ -47,7 +47,7 @@ $res = mysqli_query( $GLOBALS['connection'], $sql );
 
     <form name="bidselect" method="post" action="packs.php">
 
-        Select grid: <select name="BID" onchange="mds_submit(this)">
+        Выберите сетку: <select name="BID" onchange="mds_submit(this)">
             <option></option>
 			<?php
 			while ( $row = mysqli_fetch_array( $res ) ) {
@@ -69,13 +69,13 @@ if ( $BID != '' ) {
 	?>
     <hr>
 
-    <b>Grid ID:</b> <?php echo $BID; ?><br>
-    <b>Grid Name</b>: <?php echo $banner_data['G_NAME']; ?><br>
-    <b>Default Price per 100:</b> <?php echo $banner_data['G_PRICE']; ?><br>
+    <b>Ид сетки:</b> <?php echo $BID; ?><br>
+    <b>Имя сетки</b>: <?php echo $banner_data['G_NAME']; ?><br>
+    <b>Стандартная цена за 100:</b> <?php echo $banner_data['G_PRICE']; ?><br>
 
     <input type="button" style="background-color:#66FF33" value="New Package..." onclick="mds_load_page('packs.php?new=1&BID=<?php echo $BID; ?>', true)"><br>
 
-    Listing rows that are marked as custom price.<br>
+    Список строк, которые помечены как пользовательские цены.<br>
 
 	<?php
 
@@ -83,29 +83,29 @@ if ( $BID != '' ) {
 
 		$error = "";
 		if ( trim( $_REQUEST['price'] ) == '' ) {
-			$error .= "<b>- Price is blank</b><br>";
+			$error .= "<b>- Цена не указана</b><br>";
 		} else if ( ! is_numeric( $_REQUEST['price'] ) ) {
-			$error .= "<b>- Price must be a number.</b><br>";
+			$error .= "<b>- Цена должна быть числом.</b><br>";
 		}
 
 		if ( trim( $_REQUEST['description'] ) == '' ) {
-			$error .= "<b>- Description is blank</b><br>";
+			$error .= "<b>- Описание пусто</b><br>";
 		}
 
 		if ( trim( $_REQUEST['currency'] ) == '' ) {
-			$error .= "<b>- Currency is blank</b><br>";
+			$error .= "<b>- Валюта пуста</b><br>";
 		}
 
 		if ( trim( $_REQUEST['max_orders'] ) == '' ) {
-			$error .= "<b>- Max orders is blank</b><br>";
+			$error .= "<b>- Макс заказов пуст</b><br>";
 		} else if ( ! is_numeric( $_REQUEST['max_orders'] ) ) {
-			$error .= "<b>- Max orders must be a number</b><br>";
+			$error .= "<b>- Максимальное количество заказов должно быть числом</b><br>";
 		}
 
 		if ( trim( $_REQUEST['days_expire'] ) == '' ) {
-			$error .= "<b>- Days to expire is blank</b><br>";
+			$error .= "<b>- Дни, которые истекают, пустые</b><br>";
 		} else if ( ! is_numeric( $_REQUEST['days_expire'] ) ) {
-			$error .= "<b>- Days to expire must be a number.</b><br>";
+			$error .= "<b>- Дни до истечения должны быть числом.</b><br>";
 		}
 
 		return $error;
@@ -116,7 +116,7 @@ if ( $BID != '' ) {
 		$sql    = "SELECT * FROM orders where package_id='" . intval( $_REQUEST['package_id'] ) . "'";
 		$result = mysqli_query( $GLOBALS['connection'], $sql );
 		if ( ( mysqli_num_rows( $result ) > 0 ) && ( $_REQUEST['really'] == '' ) ) {
-			echo "<font color='red'>Cannot delete package: This package is a part of another order</font> (<a href='packs.php?BID=$BID&package_id=" . $_REQUEST['package_id'] . "&action=delete&really=yes'>Click here to delete anyway</a>)";
+			echo "<font color='red'>Невозможно удалить пакет: этот пакет является частью другого заказа</font> (<a href='packs.php?BID=$BID&package_id=" . $_REQUEST['package_id'] . "&action=delete&really=yes'>Нажмите здесь, чтобы удалить в любом случае</a>)";
 		} else {
 
 			$sql = "DELETE FROM packages WHERE package_id='" . intval( $_REQUEST['package_id'] ) . "' ";
@@ -160,7 +160,7 @@ if ( $BID != '' ) {
 		if ( $error != '' ) {
 
 			echo "<p>";
-			echo "<font color='red'>Error: cannot save due to the following errors:</font><br>";
+			echo "<font color='red'>Ошибка: невозможно сохранить из-за следующих ошибок:</font><br>";
 			echo $error;
 			echo "</p>";
 		} else {
@@ -199,14 +199,14 @@ if ( $BID != '' ) {
 
         <table width="800" cellSpacing="1" cellPadding="3" bgColor="#d9d9d9" border="0">
             <tr>
-                <td><b><font face="Arial" size="2">Package ID</font></b></td>
-                <td><b><font face="Arial" size="2">Description</font></b></td>
-                <td><b><font face="Arial" size="2">Days Expire</font></b></td>
-                <td><b><font face="Arial" size="2">Price</font></b></td>
-                <td><b><font face="Arial" size="2">Currency</font></b></td>
-                <td><b><font face="Arial" size="2">Max Orders</font></b></td>
-                <td><b><font face="Arial" size="2">Default</font></b></td>
-                <td><b><font face="Arial" size="2">Action</font></b></td>
+                <td><b><font face="Arial" size="2">ИД пакета</font></b></td>
+                <td><b><font face="Arial" size="2">Описание</font></b></td>
+                <td><b><font face="Arial" size="2">Дней</font></b></td>
+                <td><b><font face="Arial" size="2">Цена</font></b></td>
+                <td><b><font face="Arial" size="2">Валюта</font></b></td>
+                <td><b><font face="Arial" size="2">Макс заказов</font></b></td>
+                <td><b><font face="Arial" size="2">Стандартно</font></b></td>
+                <td><b><font face="Arial" size="2">Действие</font></b></td>
             </tr>
 			<?php
 			while ( $row = mysqli_fetch_array( $result, MYSQLI_ASSOC ) ) {
@@ -230,8 +230,8 @@ if ( $BID != '' ) {
 							} ?></font></td>
                     <td><font face="Arial" size="2"><?php echo $row['is_default']; ?></font></td>
 
-                    <td nowrap><font face="Arial" size="2"><a href="packs.php?package_id=<?php echo $row['package_id']; ?>&BID=<?php echo $BID; ?>&action=edit">Edit</a> <?php if ( $row['is_default'] != 'Y' ) { ?>| <a href="<?php echo $_SERVER['PHP_SELF']; ?>?package_id=<?php echo $row['package_id']; ?>&BID=<?php echo $BID; ?>&action=default">Set Default</a><?php } ?> |
-                            <a href="packs.php?package_id=<?php echo $row['package_id']; ?>&BID=<?php echo $BID; ?>&action=delete" onclick="return confirmLink(this, 'Delete, are you sure?');">Delete</a></font></td>
+                    <td nowrap><font face="Arial" size="2"><a href="packs.php?package_id=<?php echo $row['package_id']; ?>&BID=<?php echo $BID; ?>&action=edit">Редактировать</a> <?php if ( $row['is_default'] != 'Y' ) { ?>| <a href="<?php echo $_SERVER['PHP_SELF']; ?>?package_id=<?php echo $row['package_id']; ?>&BID=<?php echo $BID; ?>&action=default">Установить стандартом</a><?php } ?> |
+                            <a href="packs.php?package_id=<?php echo $row['package_id']; ?>&BID=<?php echo $BID; ?>&action=delete" onclick="return confirmLink(this, 'Delete, are you sure?');">Удалить</a></font></td>
 
                 </tr>
 
@@ -242,7 +242,7 @@ if ( $BID != '' ) {
 
 		<?php
 	} else {
-		echo "There are no packages for this grid.<br>";
+		echo "Для этой сетки нет пакетов.<br>";
 	}
 
 	?>
@@ -250,10 +250,10 @@ if ( $BID != '' ) {
 	<?php
 
 	if ( isset( $_REQUEST['new'] ) && $_REQUEST['new'] == '1' ) {
-		echo "<h4>New Package:</h4>";
+		echo "<h4>Новый пакет:</h4>";
 	}
 	if ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] == 'edit' ) {
-		echo "<h4>Edit Package:</h4>";
+		echo "<h4>Редактировать пакет:</h4>";
 
 		$sql = "SELECT * FROM packages WHERE `package_id`='" . intval( $_REQUEST['package_id'] ) . "' ";
 		$result = mysqli_query( $GLOBALS['connection'], $sql ) or die ( mysqli_error( $GLOBALS['connection'] ) );
@@ -284,28 +284,28 @@ if ( $BID != '' ) {
             <table border="0" cellSpacing="1" cellPadding="3" bgColor="#d9d9d9">
 
                 <tr bgcolor="#ffffff">
-                    <td><font size="2">Name:</font></td>
-                    <td><input size="15" type="text" name="description" value="<?php echo $_REQUEST['description']; ?>">Enter a descriptive name for the package. Eg, "$30 for 100 days."</td>
+                    <td><font size="2">Имя:</font></td>
+                    <td><input size="15" type="text" name="description" value="<?php echo $_REQUEST['description']; ?>">Введите описательное имя для пакета. Например, «30 долларов за 100 дней».</td>
                 </tr>
                 <tr bgcolor="#ffffff">
-                    <td><font size="2">Price Per Block:</font></td>
-                    <td><input size="5" type="text" name="price" value="<?php echo $_REQUEST['price']; ?>">Price per block (<?php echo( $banner_data['BLK_WIDTH'] * $banner_data['BLK_HEIGHT'] ); ?> pixels). Enter a decimal</td>
+                    <td><font size="2">Цена за блок:</font></td>
+                    <td><input size="5" type="text" name="price" value="<?php echo $_REQUEST['price']; ?>">Цена за блок (<?php echo( $banner_data['BLK_WIDTH'] * $banner_data['BLK_HEIGHT'] ); ?> пиксели). Десятичные.</td>
                 </tr>
                 <tr bgcolor="#ffffff">
-                    <td><font size="2">Currency:</font></td>
-                    <td><select size="1" name="currency"><?php currency_option_list( $_REQUEST['currency'] ); ?>The price's currency</td>
+                    <td><font size="2">Валюта:</font></td>
+                    <td><select size="1" name="currency"><?php currency_option_list( $_REQUEST['currency'] ); ?>Цена валюты</td>
                 </tr>
                 <tr bgcolor="#ffffff">
-                    <td><font size="2">Days to expire:</font></td>
-                    <td><input size="5" type="text" name="days_expire" value="<?php echo $_REQUEST['days_expire']; ?>">How many days? (Enter 0 to use the grid's default)</td>
+                    <td><font size="2">Дней до конца:</font></td>
+                    <td><input size="5" type="text" name="days_expire" value="<?php echo $_REQUEST['days_expire']; ?>">Сколько дней? (Введите 0, чтобы использовать сетку по умолчанию)</td>
                 </tr>
                 <tr bgcolor="#ffffff">
-                    <td><font size="2">Maximum orders:</font></td>
-                    <td><input size="5" type="text" name="max_orders" value="<?php echo $_REQUEST['max_orders']; ?>">How many times can this pacakge be ordered? (Enter 0 for unlimited)</td>
+                    <td><font size="2">Максимум заказов:</font></td>
+                    <td><input size="5" type="text" name="max_orders" value="<?php echo $_REQUEST['max_orders']; ?>">Сколько раз можно заказать этот пакет? (Введите 0 для неограниченного)</td>
                 </tr>
 
             </table>
-            <input type="submit" name="submit" value="Submit">
+            <input type="submit" name="submit" value="Подтвердить">
         </form>
 
 		<?php

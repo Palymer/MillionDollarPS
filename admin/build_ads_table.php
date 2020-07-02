@@ -122,7 +122,7 @@ if ( $change == 'Y' ) {
 	echo "<br />";
 	mysqli_query( $GLOBALS['connection'], $sql ) or die ( "SQL: " . $sql . "  ERROR: " . mysqli_error( $GLOBALS['connection'] ) );
 
-	echo "Database Structure Updated.";
+	echo "Структура базы данных обновлена.";
 } else {
 	//echo "No Changes need to be made.";
 }

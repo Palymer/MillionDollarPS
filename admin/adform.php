@@ -46,11 +46,11 @@ $mode = $_REQUEST['mode'];
 <b>[Ads Form]</b><br/><br/>
 <span style="background-color: <?php if ( ( $mode != 'edit' ) ) {
 	echo "#FFFFCC";
-} ?>; border-style:outset; padding: 5px;"><a href="adform.php?mode=view">View Form</a></span> <span style="background-color:  <?php if ( ( $_REQUEST['mode'] == 'edit' ) && ( $_REQUEST['NEW_FIELD'] == '' ) ) {
+} ?>; border-style:outset; padding: 5px;"><a href="adform.php?mode=view">Просмотр формы</a></span> <span style="background-color:  <?php if ( ( $_REQUEST['mode'] == 'edit' ) && ( $_REQUEST['NEW_FIELD'] == '' ) ) {
 	echo "#FFFFCC";
-} ?>; border-style:outset; padding: 5px;"><a href="adform.php?mode=edit">Edit Fields</a></span> <span style="background-color: <?php if ( ( $_REQUEST['mode'] == 'edit' ) && ( $_REQUEST['NEW_FIELD'] != '' ) ) {
+} ?>; border-style:outset; padding: 5px;"><a href="adform.php?mode=edit">Редактировать поле</a></span> <span style="background-color: <?php if ( ( $_REQUEST['mode'] == 'edit' ) && ( $_REQUEST['NEW_FIELD'] != '' ) ) {
 	echo "#FFFFCC";
-} ?>; border-style:outset; padding: 5px;"><a href="adform.php?NEW_FIELD=YES&mode=edit">New Field</a></span>&nbsp; &nbsp; <span style="background-color: <?php echo "#F2F2F2"; ?> ; border-style:outset; padding: 5px;"><a href="adtemplate.php">Edit Template</a></span> <span style="background-color: <?php echo "#F2F2F2"; ?> ; border-style:outset; padding: 5px;"><a href="adslist.php">Ad List</a></span>
+} ?>; border-style:outset; padding: 5px;"><a href="adform.php?NEW_FIELD=YES&mode=edit">Новое поле</a></span>&nbsp; &nbsp; <span style="background-color: <?php echo "#F2F2F2"; ?> ; border-style:outset; padding: 5px;"><a href="adtemplate.php">Редактировать шаблон</a></span> <span style="background-color: <?php echo "#F2F2F2"; ?> ; border-style:outset; padding: 5px;"><a href="adslist.php">Добавить лист</a></span>
 
 <br/>
 <br/>
@@ -60,7 +60,7 @@ $mode = $_REQUEST['mode'];
 
 global $AVAILABLE_LANGS;
 
-echo '<div style="width:250px;float:left;">Current Language: [' . $_SESSION['MDS_LANG'] . '] Select language:</div>';
+echo '<div style="width:250px;float:left;">Текущий язык: [' . $_SESSION['MDS_LANG'] . '] Выбор языка:</div>';
 
 ?>
 
@@ -105,7 +105,7 @@ if ( $save != '' ) {
 		$NEW_FIELD            = "NO";
 		$_REQUEST['field_id'] = $id;
 	} else {
-		echo "<font color='#ff0000'><b>ERROR!</b></font><br>" . $error . '';
+		echo "<font color='#ff0000'><b>Ошибка!</b></font><br>" . $error . '';
 	}
 }
 
@@ -119,7 +119,7 @@ if ( $_REQUEST['delete'] != '' ) {
 
 	if ( is_reserved_template_tag( $row['template_tag'] ) ) {
 
-		echo "<p><font color='red'><b>Cannot Delete:</b>  This field contains a reserved 'Template Tag' and is needed by the system. Click on the 'R' icon next to the field for more information. Instead of deleting, please rename this field / change the type / move up or down. </font></p> ";
+		echo "<p><font color='red'><b>Не возможно удалить:</b>  Это поле содержит зарезервированный тег шаблона и необходим системе. Нажмите на значок «R» рядом с полем для получения дополнительной информации. Вместо удаления, пожалуйста, переименуйте это поле / измените тип / двигайтесь вверх или вниз. </font></p> ";
 	} else {
 
 		echo "Deleting...";
@@ -177,7 +177,7 @@ if ( $mode == 'edit' ) {
 
 	?>
 
-    <img src="images/reserved.gif" width="13" height="13" border="0" alt=""> - This field is reserved by the system, and cannot be deleted. You can however, change the field type / field name, and most other parameters.
+    <img src="images/reserved.gif" width="13" height="13" border="0" alt=""> - Это поле зарезервировано системой и не может быть удалено. Однако вы можете изменить тип поля / имя поля и большинство других параметров.
 
 	<?php
 }

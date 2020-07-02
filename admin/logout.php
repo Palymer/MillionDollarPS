@@ -41,4 +41,4 @@ if ( isset( $_COOKIE['MDSADMIN_PHPSESSID'] ) ) {
 	setcookie( 'MDSADMIN_PHPSESSID', null, - 1 );
 }
 ?>
-<a href="index.php" target="_top">Click here to continue.</a>
+<a href="index.php" target="_top">Нажмите здесь для продолжения.</a>

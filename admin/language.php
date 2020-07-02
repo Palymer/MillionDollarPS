@@ -39,18 +39,18 @@ function validate_input() {
 	$error = '';
 	if ( $_REQUEST['lang_code'] == '' ) {
 
-		$error .= "- Language Code is blank <br>";
+		$error .= "- Код языка пуст <br>";
 	}
 	if ( $_REQUEST['lang_filename'] == '' ) {
 
-		$error .= "- No language file selected <br>";
+		$error .= "- Не выбран языковой файл <br>";
 	}
 	if ( ( $_FILES['lang_image']['name'] == '' ) && ( $_REQUEST['action'] != 'edit' ) ) {
-		$error .= "- No image uploaded <br>";
+		$error .= "- Нет загруженного изображения <br>";
 	}
 	if ( $_REQUEST['name'] == '' ) {
 
-		$error .= "- Language name is blank<br>";
+		$error .= "- Название языка пустое<br>";
 	}
 
 	return $error;
@@ -148,12 +148,12 @@ if ( $_REQUEST['submit'] != '' ) {
 
     <table border="0" cellSpacing="1" cellPadding="3" bgColor="#d9d9d9">
         <tr bgColor="#eaeaea">
-            <td><b><font size="2">Language</b></font></td>
-            <td><b><font size="2">Code</b></font></td>
-            <td><b><font size="2">File</b></font></td>
-            <td><b><font size="2">Image</b></font></td>
-            <td><b><font size="2">Active</b></font></td>
-            <td><b><font size="2">Tool</b></font></td>
+            <td><b><font size="2">Язык</b></font></td>
+            <td><b><font size="2">Код</b></font></td>
+            <td><b><font size="2">Файл</b></font></td>
+            <td><b><font size="2">Картинка</b></font></td>
+            <td><b><font size="2">Активный</b></font></td>
+            <td><b><font size="2">Инструмент</b></font></td>
         </tr>
 		<?php
 		$result = mysqli_query( $GLOBALS['connection'], "select * FROM lang " ) or die ( mysqli_error( $GLOBALS['connection'] ) );
@@ -167,9 +167,9 @@ if ( $_REQUEST['submit'] != '' ) {
                 <td><font size="2"><?php echo $row['lang_code']; ?></font></td>
                 <td><font size="2"><?php echo $row['lang_filename']; ?></font></td>
                 <td><font size="2"><img alt="<?php echo $row['lang_code']; ?>" src="lang_image.php?code=<?php echo $row['lang_code']; ?>"/></font></td>
-                <td><font size="2">  <?php if ( $row['is_active'] == 'Y' ) { ?><IMG SRC="images/active.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT=""><?php } else { ?><IMG SRC="images/notactive.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT=""><?php }; ?> <?php if ( $row['is_active'] != 'Y' ) { ?> [<a href="language.php?action=activate&code=<?php echo $row['lang_code']; ?>">Activate</a>] <?php }
-						if ( $row['is_active'] == 'Y' ) { ?> [<a href="language.php?action=deactivate&code=<?php echo $row['lang_code']; ?>">Deactivate</a>] <?php } ?>[<a href="language.php?action=edit&code=<?php echo $row['lang_code']; ?>">Edit</a>] <?php if ( $row['is_default'] != 'Y' ) { ?> [
-                            <a onclick=" return confirmLink(this, 'Delete, are you sure?') " href="language.php?action=delete&code=<?php echo $row['lang_code']; ?>">Delete</a>] <?php } ?>
+                <td><font size="2">  <?php if ( $row['is_active'] == 'Y' ) { ?><IMG SRC="images/active.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT=""><?php } else { ?><IMG SRC="images/notactive.gif" WIDTH="16" HEIGHT="16" BORDER="0" ALT=""><?php }; ?> <?php if ( $row['is_active'] != 'Y' ) { ?> [<a href="language.php?action=activate&code=<?php echo $row['lang_code']; ?>">Активировать</a>] <?php }
+						if ( $row['is_active'] == 'Y' ) { ?> [<a href="language.php?action=deactivate&code=<?php echo $row['lang_code']; ?>">Выключить</a>] <?php } ?>[<a href="language.php?action=edit&code=<?php echo $row['lang_code']; ?>">Редактировать</a>] <?php if ( $row['is_default'] != 'Y' ) { ?> [
+                            <a onclick=" return confirmLink(this, 'Delete, are you sure?') " href="language.php?action=delete&code=<?php echo $row['lang_code']; ?>">Удалить</a>] <?php } ?>
                         [<a href="language.php?action=default&code=<?php echo $row['lang_code']; ?>"><?php if ( $row['is_default'] == 'N' ) {
 								echo "Set Default";
 							} ?></a> <?php if ( $row['is_default'] == 'Y' ) {
@@ -177,7 +177,7 @@ if ( $_REQUEST['submit'] != '' ) {
 						}; ?>]
                     </font></td>
                 <td>
-                    <font size="2"><a href="translation_tool.php?target_lang=<?php echo $row['lang_code']; ?>">Translation / Editing Tool</a>
+                    <font size="2"><a href="translation_tool.php?target_lang=<?php echo $row['lang_code']; ?>">Инструмент для перевода / редактирования</a>
 
                 </td>
 
@@ -189,16 +189,16 @@ if ( $_REQUEST['submit'] != '' ) {
     </table>
     <input type="button" value="New Language..." onclick="mds_load_page('language.php?new=1', true)">
     <p>
-        Note: Before adding a new language, please copy english_default.php and name this file to the language of your choice. Eg copy english_default.php to spanish.php.
+        Примечание. Перед добавлением нового языка скопируйте файл english_default.php и назовите этот файл на выбранном вами языке. Например, скопируйте english_default.php в spanish.php.
     </p>
     <p>
-        Please modify the langauge files from the web using the editing tool above.
+        Пожалуйста, измените языковые файлы, используя инструмент редактирования выше.
     </p>
     <hr>
 <?php
 
 if ( $error != '' ) {
-	echo "<b><font color='red'>ERROR:</font></b> Cannot save langauge into database.<br>";
+	echo "<b><font color='red'>ОШИБКА:</font></b> Невозможно сохранить язык в базе данных.<br>";
 	echo $error;
 }
 
@@ -246,11 +246,11 @@ if ( $_REQUEST['action'] == 'edit' ) {
 <?php
 
 if ( $_REQUEST['new'] == '1' ) {
-	echo "<h4>New Language:</h4>";
+	echo "<h4>Новый язык:</h4>";
 	//echo "<p>Note: Make sure that you create a file for your new language in the /lang directory.</p>";
 }
 if ( $_REQUEST['action'] == 'edit' ) {
-	echo "<h4>Edit Language:</h4>";
+	echo "<h4>Изменить язык:</h4>";
 }
 
 if ( ( $_REQUEST['new'] != '' ) || ( $_REQUEST['action'] == 'edit' ) ) {
@@ -260,27 +260,27 @@ if ( ( $_REQUEST['new'] != '' ) || ( $_REQUEST['action'] == 'edit' ) ) {
     <input type="hidden" value="<?php echo $_REQUEST['lang_code'] ?>" name="lang_code">
     <table border="0" cellSpacing="1" cellPadding="3" bgColor="#d9d9d9">
         <tr bgcolor="#ffffff">
-            <td><font size="2">Language Name:</font></td>
-            <td><input size="30" type="text" name="name" value="<?php echo $_REQUEST['name']; ?>"/> eg. English</td>
+            <td><font size="2">Название языка:</font></td>
+            <td><input size="30" type="text" name="name" value="<?php echo $_REQUEST['name']; ?>"/> English</td>
         </tr>
         <tr bgcolor="#ffffff">
-            <td><font size="2">Language Code:</font></td>
-            <td><input <?php echo $disabled; ?> size="2" type="text" name="lang_code" value="<?php echo $_REQUEST['lang_code']; ?>"/> eg. EN</td>
+            <td><font size="2">Код языка:</font></td>
+            <td><input <?php echo $disabled; ?> size="2" type="text" name="lang_code" value="<?php echo $_REQUEST['lang_code']; ?>"/> EN</td>
         </tr>
         <tr bgcolor="#ffffff">
-            <td><font size="2">Language File:</font></td>
+            <td><font size="2">Файл языка:</font></td>
             <td><select name="lang_filename">
                     <option></option><?php lang_file_options(); ?></td>
         </tr>
         <tr bgcolor="#ffffff">
-            <td><font size="2">Image:</font></td>
+            <td><font size="2">Картинка:</font></td>
             <td><input size="15" type="file" name="lang_image" value=""></td>
         </tr>
         <!--
 <tr bgcolor="#ffffff" ><td><font size="2">Parameter for setlocale() function:</font></td><td><input size="15" type="text" name="charset" value="<?php echo $_REQUEST['charset']; ?>"><font size="2">(List of valid locale strings for windows can be found at: <a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vclib/html/_crt_language_strings.asp" target="new_">http://msdn.microsoft.com/library/default.asp?url=/library/en-us/vclib/html/_crt_language_strings.asp</a>. Documentation of setlocale function available at: <a href="http://php.net/setlocale">http://php.net/setlocale</a> Leave this field blank if unsure.)</a></td></tr>
 -->
     </table>
-    <input type="submit" name="submit" value="Submit">
+    <input type="submit" name="submit" value="ОК">
     </form>
 	<?php
 }
